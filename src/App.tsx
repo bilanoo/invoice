@@ -2,7 +2,7 @@ import { ThemeProvider } from "@emotion/react";
 import "./App.css";
 import { Header } from "./Header/Header";
 import { useMemo, useState } from "react";
-import { PaletteMode, createTheme } from "@mui/material";
+import { Box, PaletteMode, createTheme } from "@mui/material";
 import { getDesignTokens } from "./theme";
 
 function App() {
@@ -15,8 +15,10 @@ function App() {
   );
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <h1>Invoice App</h1>
+      <div className="content-container">
+        <Header />
+        <h1>Invoice App</h1>
+      </div>
     </ThemeProvider>
   );
 }
