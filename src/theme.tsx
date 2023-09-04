@@ -1,5 +1,20 @@
 import { PaletteMode } from "@mui/material";
 
+declare module "@mui/material/styles" {
+  interface Theme {
+    customPalette: {
+      mainPurple: string;
+      white: string;
+    };
+  }
+  interface ThemeOptions {
+    customPalette?: {
+      mainPurple?: string;
+      white?: string;
+    };
+  }
+}
+
 export const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
     mode,
@@ -9,6 +24,11 @@ export const getDesignTokens = (mode: PaletteMode) => ({
     },
     text: {
       primary: mode === "light" ? "#0C0E16" : "#FFF",
+      secondary: mode === "light" ? "#888EB0" : "#DFE3FA",
     },
+  },
+  customPalette: {
+    mainPurple: "#7C5DFA",
+    white: "#FFF",
   },
 });
