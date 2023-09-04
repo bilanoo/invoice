@@ -1,12 +1,29 @@
-import { Typography } from "@mui/material";
-import { Container } from "./HeaderStyles";
+import {
+  AvatarContainer,
+  Container,
+  DarkOrLightModeButton,
+  Divide,
+} from "./HeaderStyles";
+import Logo from "../assets/logo-with-background.svg";
+import Moon from "../assets/icon-moon.svg";
+import Avatar from "../assets/image-avatar.jpg";
 
 export const Header = () => {
   return (
     <Container>
-      <Typography sx={{ fontFamily: "inherit" }}>
-        Whereas disregard and contempt for human rights have resulted{" "}
-      </Typography>
+      <img src={Logo} alt="invoice-logo" />
+
+      <DarkOrLightModeButton>
+        <img src={Moon} alt="dark-or-light-mode-button" />
+      </DarkOrLightModeButton>
+      <Divide orientation="vertical" />
+      <AvatarContainer>
+        <img
+          src={Avatar}
+          alt="user-avatar-image"
+          style={{ borderRadius: "50%" }}
+        />
+      </AvatarContainer>
     </Container>
   );
 };
