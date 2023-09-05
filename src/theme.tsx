@@ -7,6 +7,8 @@ declare module "@mui/material/styles" {
       lightPurple: string;
       white: string;
       backgroundColor: string;
+      invoiceBackgroundColor: string;
+      blueYonderToWhite: string;
     };
   }
   interface ThemeOptions {
@@ -15,6 +17,8 @@ declare module "@mui/material/styles" {
       lightPurple?: string;
       white?: string;
       backgroundColor?: string;
+      invoiceBackgroundColor?: string;
+      blueYonderToWhite?: string;
     };
   }
 }
@@ -36,5 +40,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
     white: "#FFF",
     backgroundColor: mode === "light" ? "#FFF" : "#252945",
     lightPurple: "#9277FF",
+    invoiceBackgroundColor: mode === "light" ? "#FFF" : "#1E2139",
+    blueYonderToWhite: mode === "light" ? "#858BB2" : "#FFF",
   },
 });
