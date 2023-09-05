@@ -14,6 +14,14 @@ export const Container = styled(Box)(() => ({
     display: "flex",
     fontFamily: "inherit",
   },
+  "@media only screen and (min-width: 992px)": {
+    "&": {
+      margin: "0 auto 0 auto",
+      alignSelf: "center",
+      alignItems: "center",
+      width: "730px",
+    },
+  },
 }));
 
 export const TextContainer = styled(Box)(() => ({
@@ -81,6 +89,9 @@ export const NewInvoiceButton = styled(Button)(({ theme }) => ({
     borderRadius: "30px",
     minWidth: "100px",
     alignItems: "center",
+  },
+  "&:hover": {
+    backgroundColor: theme.customPalette.lightPurple,
   },
 }));
 

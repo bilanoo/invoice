@@ -14,8 +14,10 @@ import DropdownArrow from "../assets/icon-arrow-down.svg";
 import PlusIcon from "../assets/plus-icon.svg";
 import { useState } from "react";
 import { FormControlLabel, MenuItem } from "@mui/material";
+import useWindowDimensions from "../utils";
 
 export const InvoiceNavbar = () => {
+  const { width } = useWindowDimensions();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -32,7 +34,7 @@ export const InvoiceNavbar = () => {
         <InvoiceText>Invoice</InvoiceText>
         <AmountOfInvoices>No invoices</AmountOfInvoices>
       </TextContainer>
-      <FilterByText>Filter</FilterByText>
+      <FilterByText>{width < 650 ? "Filter" : "Filter by status"}</FilterByText>
       <FilterDropdownButton onClick={handleClick}>
         <img src={DropdownArrow} alt="filter-dropdown-button" />
       </FilterDropdownButton>
@@ -65,7 +67,7 @@ export const InvoiceNavbar = () => {
       <NewInvoiceButton
         startIcon={<img src={PlusIcon} alt="Add new invoice icon" />}
       >
-        New
+        {width < 650 ? "New" : "New Invoice"}
       </NewInvoiceButton>
     </Container>
   );

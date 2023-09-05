@@ -7,6 +7,7 @@ export const Container = styled(Box)(({ theme }) => ({
     width: "100%",
     height: "72px",
     alignItems: "center",
+    justifyContent: "center",
   },
   "@media (min-width: 992px)": {
     "&": {

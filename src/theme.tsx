@@ -4,6 +4,7 @@ declare module "@mui/material/styles" {
   interface Theme {
     customPalette: {
       mainPurple: string;
+      lightPurple: string;
       white: string;
       backgroundColor: string;
     };
@@ -11,6 +12,7 @@ declare module "@mui/material/styles" {
   interface ThemeOptions {
     customPalette?: {
       mainPurple?: string;
+      lightPurple?: string;
       white?: string;
       backgroundColor?: string;
     };
@@ -33,5 +35,6 @@ export const getDesignTokens = (mode: PaletteMode) => ({
     mainPurple: "#7C5DFA",
     white: "#FFF",
     backgroundColor: mode === "light" ? "#FFF" : "#252945",
+    lightPurple: "#9277FF",
   },
 });
