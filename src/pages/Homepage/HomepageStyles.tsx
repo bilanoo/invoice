@@ -14,3 +14,21 @@ export const Container = styled(Box)(({ theme }) => ({
     },
   },
 }));
+
+export const InvoiceContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+  },
+  "@media only screen and (min-width: 992px)": {
+    "&": {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+  },
+}));

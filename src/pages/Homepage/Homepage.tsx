@@ -2,8 +2,9 @@ import { PaletteMode, ThemeProvider, createTheme } from "@mui/material";
 import { useMemo, useState } from "react";
 import { getDesignTokens } from "../../theme";
 import { Header } from "../../Header/Header";
-import { Container } from "./HomepageStyles";
+import { Container, InvoiceContainer } from "./HomepageStyles";
 import { InvoiceNavbar } from "../../InvoiceNavbar/InvoiceNavbar";
+import { EmptyInvoice } from "../../EmptyInvoice/EmptyInvoice";
 
 export const Homepage = () => {
   const [lightOrDarkMode, setLightOrDarkMode] = useState<PaletteMode>("light");
@@ -17,7 +18,10 @@ export const Homepage = () => {
     <ThemeProvider theme={theme}>
       <Container>
         <Header />
-        <InvoiceNavbar />
+        <InvoiceContainer>
+          <InvoiceNavbar />
+          <EmptyInvoice />
+        </InvoiceContainer>
       </Container>
     </ThemeProvider>
   );
