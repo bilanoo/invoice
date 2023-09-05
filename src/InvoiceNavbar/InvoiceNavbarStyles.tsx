@@ -1,4 +1,12 @@
-import { Box, Button, IconButton, Typography, styled } from "@mui/material";
+import {
+  Box,
+  Button,
+  Checkbox,
+  IconButton,
+  Menu,
+  Typography,
+  styled,
+} from "@mui/material";
 
 export const Container = styled(Box)(() => ({
   "&": {
@@ -56,6 +64,12 @@ export const FilterDropdownButton = styled(IconButton)(() => ({
   },
 }));
 
+export const FilterMenu = styled(Menu)(({ theme }) => ({
+  "& .MuiPaper-root": {
+    backgroundColor: theme.customPalette.backgroundColor,
+  },
+}));
+
 export const NewInvoiceButton = styled(Button)(({ theme }) => ({
   "&": {
     fontSize: "0.938rem",
@@ -67,5 +81,23 @@ export const NewInvoiceButton = styled(Button)(({ theme }) => ({
     borderRadius: "30px",
     minWidth: "100px",
     alignItems: "center",
+  },
+}));
+
+export const CustomCheckbox = styled(Checkbox)(({ theme }) => ({
+  "&.Mui-checked": {
+    color: theme.customPalette.mainPurple,
+  },
+
+  "&:hover": {
+    color: theme.customPalette.mainPurple,
+  },
+}));
+
+export const LabelInformation = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    color: theme.palette.text.primary,
+    fontWeight: 700,
   },
 }));
