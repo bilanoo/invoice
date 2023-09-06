@@ -11,6 +11,11 @@ export const Container = styled(Box)(({ theme }) => ({
     alignSelf: "center",
     borderRadius: "8px",
   },
+  "@media only screen and (min-width: 992px)": {
+    "&": {
+      width: "93%",
+    },
+  },
 }));
 
 export const IdAndNameContainer = styled(Box)(() => ({
