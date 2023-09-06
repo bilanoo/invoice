@@ -5,6 +5,6 @@ export const Container = styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    marginTop: "32px",
+    margin: "32px 24px 0 24px",
   },
 }));

@@ -5,8 +5,8 @@ export const Container = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     backgroundColor: theme.customPalette.invoiceBackgroundColor,
-    width: "327px",
-    height: "134px",
+    width: "100%",
+    height: "auto",
     justifySelf: "center",
     alignSelf: "center",
     borderRadius: "8px",
@@ -32,6 +32,7 @@ export const InvoiceId = styled(Typography)(({ theme }) => ({
 export const InvoicePaymentInformation = styled(Box)(() => ({
   "&": {
     display: "flex",
+    marginBottom: "22px",
   },
 }));
 
