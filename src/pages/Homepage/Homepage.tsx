@@ -6,6 +6,7 @@ import { Container, InvoiceContainer } from "./HomepageStyles";
 import { InvoiceNavbar } from "../../InvoiceNavbar/InvoiceNavbar";
 import { EmptyInvoice } from "../../EmptyInvoice/EmptyInvoice";
 import { InvoiceDetail } from "../../InvoicesDetail/InvoicesDetail";
+import { invoiceData } from "../../data";
 
 export const Homepage = () => {
   const [lightOrDarkMode, setLightOrDarkMode] = useState<PaletteMode>("light");
@@ -15,6 +16,8 @@ export const Homepage = () => {
     () => createTheme(getDesignTokens(lightOrDarkMode)),
     [lightOrDarkMode]
   );
+
+  console.log(invoiceData);
   return (
     <ThemeProvider theme={theme}>
       <Container>
