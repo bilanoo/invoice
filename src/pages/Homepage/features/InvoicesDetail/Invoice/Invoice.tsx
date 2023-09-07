@@ -12,24 +12,38 @@ import {
   StatusText,
 } from "./SingleInvoiceStyles";
 
-export const Invoice = () => {
+interface InvoiceProps {
+  invoiceId: string;
+  clientName: string;
+  dueDate: string;
+  invoiceAmount: number;
+  status: string;
+}
+
+export const Invoice = ({
+  invoiceId,
+  clientName,
+  dueDate,
+  invoiceAmount,
+  status,
+}: InvoiceProps) => {
   return (
     <Container>
       <IdAndNameContainer>
         <InvoiceId>
           <span style={{ color: "#7E88C3" }}>#</span>
-          RT3080
+          {invoiceId}
         </InvoiceId>
-        <SmallInformationText>Jensen huang</SmallInformationText>
+        <SmallInformationText>{clientName}</SmallInformationText>
       </IdAndNameContainer>
       <InvoicePaymentInformation>
         <DueDateAndPaymentInformation>
-          <DueDateText>Due 20 Sep 2021</DueDateText>
-          <InvoiceAmount>£ 1,800.90</InvoiceAmount>
+          <DueDateText>Due {dueDate}</DueDateText>
+          <InvoiceAmount>£ {invoiceAmount}</InvoiceAmount>
         </DueDateAndPaymentInformation>
         <InvoiceStatus>
           <Ball />
-          <StatusText>Paid</StatusText>
+          <StatusText>{status}</StatusText>
         </InvoiceStatus>
       </InvoicePaymentInformation>
     </Container>

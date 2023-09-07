@@ -20,6 +20,7 @@ export const InvoiceContainer = styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
     height: "100%",
+    overflow: "auto",
   },
   "@media only screen and (min-width: 992px)": {
     "&": {

@@ -6,12 +6,9 @@ import { Container, InvoiceContainer } from "./HomepageStyles";
 import { InvoiceNavbar } from "../../InvoiceNavbar/InvoiceNavbar";
 import { EmptyInvoice } from "../../EmptyInvoice/EmptyInvoice";
 import { InvoiceDetail } from "./features/InvoicesDetail/InvoicesDetail";
-import { useAppSelector } from "../hooks";
 
 export const Homepage = () => {
   const [lightOrDarkMode, setLightOrDarkMode] = useState<PaletteMode>("light");
-
-  const invoiceData = useAppSelector((state) => state.invoice.value);
 
   // Update the theme only if the mode changes
   const theme = useMemo(
@@ -19,7 +16,6 @@ export const Homepage = () => {
     [lightOrDarkMode]
   );
 
-  console.log(invoiceData);
   return (
     <ThemeProvider theme={theme}>
       <Container>
