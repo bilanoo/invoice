@@ -41,9 +41,9 @@ export const Invoice = ({
           <DueDateText>Due {dueDate}</DueDateText>
           <InvoiceAmount>£ {invoiceAmount}</InvoiceAmount>
         </DueDateAndPaymentInformation>
-        <InvoiceStatus>
-          <Ball />
-          <StatusText>{status}</StatusText>
+        <InvoiceStatus status={status}>
+          <Ball status={status} />
+          <StatusText status={status}>{status}</StatusText>
         </InvoiceStatus>
       </InvoicePaymentInformation>
     </Container>
