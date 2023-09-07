@@ -5,7 +5,7 @@ import { Header } from "../../Header/Header";
 import { Container, InvoiceContainer } from "./HomepageStyles";
 import { InvoiceNavbar } from "../../InvoiceNavbar/InvoiceNavbar";
 import { EmptyInvoice } from "../../EmptyInvoice/EmptyInvoice";
-import { InvoiceDetail } from "../../InvoicesDetail/InvoicesDetail";
+import { InvoiceDetail } from "./features/InvoicesDetail/InvoicesDetail";
 import { invoiceData } from "../../data";
 
 export const Homepage = () => {
