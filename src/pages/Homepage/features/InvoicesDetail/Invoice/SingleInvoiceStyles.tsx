@@ -10,6 +10,8 @@ export const Container = styled(Box)(({ theme }) => ({
     justifySelf: "center",
     alignSelf: "center",
     borderRadius: "8px",
+    cursor: "pointer",
+    marginBottom: "16px",
   },
   "@media only screen and (min-width: 992px)": {
     "&": {

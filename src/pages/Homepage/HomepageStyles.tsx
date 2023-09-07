@@ -28,8 +28,7 @@ export const InvoiceContainer = styled(Box)(() => ({
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      marginLeft: "auto",
-      marginRight: "auto",
+      width: "100%",
     },
   },
 }));
