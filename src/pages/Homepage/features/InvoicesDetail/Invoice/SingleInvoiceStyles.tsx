@@ -105,7 +105,7 @@ export const Ball = styled(Box)(() => ({
   },
 }));
 
-export const StatusText = styled(Typography)(({ theme }) => ({
+export const StatusText = styled(Typography)(() => ({
   "&": {
     color: "#33D69F",
     fontSize: "0.938rem",
