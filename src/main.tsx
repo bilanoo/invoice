@@ -5,11 +5,16 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Homepage } from "./pages/Homepage/Homepage.tsx";
 import { Provider } from "react-redux";
 import { store } from "./pages/store.tsx";
+import { EditInvoice } from "./pages/EditInvoice/Editinvoice.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Homepage />,
+  },
+  {
+    path: "/edit-invoice/:id",
+    element: <EditInvoice />,
   },
 ]);
 

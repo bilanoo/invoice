@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../hooks";
 import { Invoice } from "./Invoice/Invoice";
 import { Container } from "./InvoicesDetailStyles";
@@ -7,14 +8,16 @@ export const InvoiceDetail = () => {
   return (
     <Container>
       {invoiceData.map((invoice) => (
-        <Invoice
-          key={invoice.id}
-          invoiceId={invoice.id}
-          clientName={invoice.clientName}
-          dueDate={invoice.paymentDue}
-          status={invoice.status}
-          invoiceAmount={invoice.total}
-        />
+        <Link to={`/edit-invoice/${invoice.id}`} key={invoice.id}>
+          <Invoice
+            key={invoice.id}
+            invoiceId={invoice.id}
+            clientName={invoice.clientName}
+            dueDate={invoice.paymentDue}
+            status={invoice.status}
+            invoiceAmount={invoice.total}
+          />
+        </Link>
       ))}
 
       {/* <Invoice
