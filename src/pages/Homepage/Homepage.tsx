@@ -12,7 +12,7 @@ export const Homepage = () => {
   const lightOrDarkMode = useAppSelector(
     (state) => state.darkOrLightMode.value
   );
-
+  const invoiceData = useAppSelector((state) => state.invoice.value);
   // Update the theme only if the mode changes
   const theme = useMemo(
     () => createTheme(getDesignTokens(lightOrDarkMode)),
@@ -25,8 +25,7 @@ export const Homepage = () => {
         <Header />
         <InvoiceContainer>
           <InvoiceNavbar />
-          {/* <EmptyInvoice /> */}
-          <InvoiceDetail />
+          {invoiceData.length === 0 ? <EmptyInvoice /> : <InvoiceDetail />}
         </InvoiceContainer>
       </Container>
     </ThemeProvider>
