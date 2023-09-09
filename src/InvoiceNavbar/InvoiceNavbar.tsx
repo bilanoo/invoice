@@ -12,14 +12,19 @@ import {
 } from "./InvoiceNavbarStyles";
 import DropdownArrow from "../assets/icon-arrow-down.svg";
 import PlusIcon from "../assets/plus-icon.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormControlLabel, MenuItem } from "@mui/material";
 import useWindowDimensions from "../utils";
+import { useAppDispatch } from "../pages/hooks";
 
 export const InvoiceNavbar = () => {
+  const dispatch = useAppDispatch();
   const { width } = useWindowDimensions();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [filter, setFilter] = useState<string[]>([]);
   const open = Boolean(anchorEl);
+
+  const filterByStatus = ["Draft", "Pending", "Paid"];
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -27,6 +32,25 @@ export const InvoiceNavbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleFilterChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    if (checked) {
+      setFilter((prevState) => [...prevState, event.currentTarget.value]);
+    } else {
+      setFilter(
+        filter.filter((status) => status !== event.currentTarget.value)
+      );
+    }
+  };
+
+  useEffect(() => {
+    console.log(filter);
+    dispatch({ type: "invoice/filter", payload: filter });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
 
   return (
     <Container>
@@ -45,24 +69,20 @@ export const InvoiceNavbar = () => {
         anchorEl={anchorEl}
         onClose={handleClose}
       >
-        <MenuItem>
-          <FormControlLabel
-            control={<CustomCheckbox />}
-            label={<LabelInformation>Draft</LabelInformation>}
-          />
-        </MenuItem>
-        <MenuItem>
-          <FormControlLabel
-            control={<CustomCheckbox />}
-            label={<LabelInformation>Pending</LabelInformation>}
-          />
-        </MenuItem>
-        <MenuItem>
-          <FormControlLabel
-            control={<CustomCheckbox />}
-            label={<LabelInformation>Paid</LabelInformation>}
-          />
-        </MenuItem>
+        {filterByStatus.map((status) => (
+          <MenuItem key={status}>
+            <FormControlLabel
+              control={
+                <CustomCheckbox
+                  value={status.toLowerCase()}
+                  onChange={handleFilterChange}
+                  checked={filter.includes(status.toLowerCase())}
+                />
+              }
+              label={<LabelInformation>{status}</LabelInformation>}
+            />
+          </MenuItem>
+        ))}
       </FilterMenu>
       <NewInvoiceButton
         startIcon={<img src={PlusIcon} alt="Add new invoice icon" />}

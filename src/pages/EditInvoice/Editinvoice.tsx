@@ -23,7 +23,6 @@ export const EditInvoice = () => {
     [lightOrDarkMode]
   );
 
-  console.log(invoice);
   return (
     <ThemeProvider theme={theme}>
       <Container>

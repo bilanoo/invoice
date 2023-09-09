@@ -18,6 +18,15 @@ export const invoiceSlice = createSlice({
       console.log(action.payload);
       state.value = action.payload;
     },
+    filter: (state, action) => {
+      if (action.payload.length === 0) {
+        state.value = invoiceData;
+        return;
+      }
+      state.value = invoiceData.filter((invoice) =>
+        action.payload.includes(invoice.status)
+      );
+    },
   },
 });
 

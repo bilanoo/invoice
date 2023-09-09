@@ -5,6 +5,7 @@ import { Container } from "./InvoicesDetailStyles";
 
 export const InvoiceDetail = () => {
   const invoiceData = useAppSelector((state) => state.invoice.value);
+
   return (
     <Container>
       {invoiceData.map((invoice) => (
