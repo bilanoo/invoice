@@ -9,7 +9,11 @@ export const InvoiceDetail = () => {
   return (
     <Container>
       {invoiceData.map((invoice) => (
-        <Link to={`/edit-invoice/${invoice.id}`} key={invoice.id}>
+        <Link
+          to={`/edit-invoice/${invoice.id}`}
+          key={invoice.id}
+          style={{ textDecoration: "none" }}
+        >
           <Invoice
             key={invoice.id}
             invoiceId={invoice.id}

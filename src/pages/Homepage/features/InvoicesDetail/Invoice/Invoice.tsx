@@ -1,5 +1,5 @@
+import { InvoiceStatus } from "../../InvoiceStatus/InvoiceStatus";
 import {
-  Ball,
   Container,
   DueDateAndPaymentInformation,
   DueDateText,
@@ -7,9 +7,7 @@ import {
   InvoiceAmount,
   InvoiceId,
   InvoicePaymentInformation,
-  InvoiceStatus,
   SmallInformationText,
-  StatusText,
 } from "./SingleInvoiceStyles";
 
 interface InvoiceProps {
@@ -41,10 +39,7 @@ export const Invoice = ({
           <DueDateText>Due {dueDate}</DueDateText>
           <InvoiceAmount>£ {invoiceAmount}</InvoiceAmount>
         </DueDateAndPaymentInformation>
-        <InvoiceStatus status={status}>
-          <Ball status={status} />
-          <StatusText status={status}>{status}</StatusText>
-        </InvoiceStatus>
+        <InvoiceStatus status={status} />
       </InvoicePaymentInformation>
     </Container>
   );
