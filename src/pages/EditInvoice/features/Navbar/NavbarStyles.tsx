@@ -43,6 +43,12 @@ export const ModifyInvoiceContainer = styled(Box)(() => ({
     gap: "8px",
     boxSizing: "border-box",
   },
+
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      paddingLeft: "198px",
+    },
+  },
 }));
 
 export const EditInvoiceButton = styled(Button)(({ theme }) => ({

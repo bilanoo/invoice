@@ -5,7 +5,11 @@ import { getDesignTokens } from "../../theme";
 import { Container } from "../Homepage/HomepageStyles";
 import { Header } from "../../Header/Header";
 import { Link, useParams } from "react-router-dom";
-import { PreviousPageButton, PreviousPageContainer } from "./EditInvoiceStyles";
+import {
+  ContentContainer,
+  PreviousPageButton,
+  PreviousPageContainer,
+} from "./EditInvoiceStyles";
 import BackArrow from "../../assets/back-arrow-icon.svg";
 import { Navbar } from "./features/Navbar/Navbar";
 
@@ -31,16 +35,18 @@ export const EditInvoice = () => {
     <ThemeProvider theme={theme}>
       <Container>
         <Header />
-        <PreviousPageContainer>
-          <Link to={"/"} style={{ textDecoration: "none" }}>
-            <PreviousPageButton
-              startIcon={<img src={BackArrow} alt="previous page button" />}
-            >
-              Go Back
-            </PreviousPageButton>
-          </Link>
-        </PreviousPageContainer>
-        <Navbar status={invoice!.status} />
+        <ContentContainer>
+          <PreviousPageContainer>
+            <Link to={"/"} style={{ textDecoration: "none" }}>
+              <PreviousPageButton
+                startIcon={<img src={BackArrow} alt="previous page button" />}
+              >
+                Go Back
+              </PreviousPageButton>
+            </Link>
+          </PreviousPageContainer>
+          <Navbar status={invoice!.status} />
+        </ContentContainer>
       </Container>
     </ThemeProvider>
   );
