@@ -20,14 +20,6 @@ export const InvoiceDetail = () => {
           />
         </Link>
       ))}
-
-      {/* <Invoice
-        invoiceId={"2"}
-        clientName={"blal"}
-        dueDate={"2021-08-19"}
-        status={"paid"}
-        invoiceAmount={100}
-      /> */}
     </Container>
   );
 };
