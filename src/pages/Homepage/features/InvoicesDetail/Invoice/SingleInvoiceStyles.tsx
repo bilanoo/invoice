@@ -16,6 +16,8 @@ export const Container = styled(Box)(({ theme }) => ({
   "@media only screen and (min-width: 992px)": {
     "&": {
       width: "93%",
+      marginLeft: "auto",
+      marginRight: "auto",
     },
   },
 }));
