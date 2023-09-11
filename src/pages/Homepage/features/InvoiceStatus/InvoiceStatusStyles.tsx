@@ -6,18 +6,18 @@ interface StatusProps {
 
 export const InvoiceStatusContainer = styled(Box, {
   shouldForwardProp: (prop) => prop !== "status",
-})<StatusProps>(({ status }) => ({
+})<StatusProps>(({ theme, status }) => ({
   "&": {
     display: "flex",
     width: "104px",
     height: "40px",
     backgroundColor:
       status === "paid"
-        ? "#F4FDFA"
+        ? theme.customPalette.backgroundColorPaidInvoice
         : status === "pending"
-        ? "#FFF9F1"
+        ? theme.customPalette.backgroundColorPendingInvoice
         : status === "draft"
-        ? "#F4F4F5"
+        ? theme.customPalette.backgroundColorDraftInvoice
         : null,
     borderRadius: "6px",
     marginLeft: "auto",
