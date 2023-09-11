@@ -26,7 +26,7 @@ declare module "@mui/material/styles" {
       backgroundColor?: string;
       invoiceBackgroundColor?: string;
       blueYonderToWhite?: string;
-      grapeFruitRed?: string;
+      grapefruitRed?: string;
       lightSalmonPink?: string;
       tropicalIndigo?: string;
       backgroundColorDraftInvoice?: string;

@@ -27,7 +27,9 @@ export const Navbar = ({ status }: NavbarProps) => {
         <ModifyInvoiceContainer>
           <EditInvoiceButton>Edit</EditInvoiceButton>
           <DeleteInvoiceButton>Delete</DeleteInvoiceButton>
-          <MarkAsPaidButton>Mark as Paid</MarkAsPaidButton>
+          <MarkAsPaidButton disabled={status === "paid"}>
+            Mark as Paid
+          </MarkAsPaidButton>
         </ModifyInvoiceContainer>
       )}
     </Container>
