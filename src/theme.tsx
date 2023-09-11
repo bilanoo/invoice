@@ -9,9 +9,13 @@ declare module "@mui/material/styles" {
       backgroundColor: string;
       invoiceBackgroundColor: string;
       blueYonderToWhite: string;
+      grapefruitRed: string;
+      lightSalmonPink: string;
+      tropicalIndigo: string;
       backgroundColorDraftInvoice: string;
       backgroundColorPendingInvoice: string;
       backgroundColorPaidInvoice: string;
+      ghostWhiteToLightBlue: string;
     };
   }
   interface ThemeOptions {
@@ -22,9 +26,13 @@ declare module "@mui/material/styles" {
       backgroundColor?: string;
       invoiceBackgroundColor?: string;
       blueYonderToWhite?: string;
+      grapeFruitRed?: string;
+      lightSalmonPink?: string;
+      tropicalIndigo?: string;
       backgroundColorDraftInvoice?: string;
       backgroundColorPendingInvoice?: string;
       backgroundColorPaidInvoice?: string;
+      ghostWhiteToLightBlue?: string;
     };
   }
 }
@@ -48,6 +56,10 @@ export const getDesignTokens = (mode: PaletteMode) => ({
     lightPurple: "#9277FF",
     invoiceBackgroundColor: mode === "light" ? "#FFF" : "#1E2139",
     blueYonderToWhite: mode === "light" ? "#858BB2" : "#FFF",
+    ghostWhiteToLightBlue: mode === "light" ? "#F9FAFE" : "#252945",
+    grapefruitRed: "#EC5757",
+    lightSalmonPink: "#FF9797",
+    tropicalIndigo: "#9277FF",
     backgroundColorDraftInvoice: mode === "light" ? "#F4F4F5" : "#292C44",
     backgroundColorPendingInvoice: mode === "light" ? "#FFF9F1" : "#2B2736",
     backgroundColorPaidInvoice: mode === "light" ? "#F4FDFA" : "#1F2B3F",
