@@ -12,6 +12,7 @@ import {
 } from "./EditInvoiceStyles";
 import BackArrow from "../../assets/back-arrow-icon.svg";
 import { Navbar } from "./features/Navbar/Navbar";
+import { InvoiceContent } from "./features/InvoiceContent/InvoiceContent";
 
 export const EditInvoice = () => {
   const { id } = useParams();
@@ -47,6 +48,7 @@ export const EditInvoice = () => {
           </PreviousPageContainer>
           <Navbar status={invoice!.status} />
         </ContentContainer>
+        <InvoiceContent />
       </Container>
     </ThemeProvider>
   );
