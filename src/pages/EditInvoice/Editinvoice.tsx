@@ -19,7 +19,6 @@ import {
   EditInvoiceButton,
   MarkAsPaidButton,
 } from "./features/Navbar/NavbarStyles";
-import useWindowDimensions from "../../utils";
 
 export const EditInvoice = () => {
   const { id } = useParams();
@@ -28,8 +27,6 @@ export const EditInvoice = () => {
   const [invoice, setInvoice] = useState(
     allInvoicesData.find((invoice) => invoice.id === id)
   );
-
-  const { width } = useWindowDimensions();
 
   const lightOrDarkMode = useAppSelector(
     (state) => state.darkOrLightMode.value
@@ -60,22 +57,18 @@ export const EditInvoice = () => {
           <InvoiceContent />
         </ContentContainer>
 
-        {width < 768 && (
-          <ModifyInvoiceActionContainer>
-            <EditInvoiceButton>Edit</EditInvoiceButton>
-            <DeleteInvoiceButton
-              sx={{ marginTop: "21px", marginBottom: "22px" }}
-            >
-              Delete
-            </DeleteInvoiceButton>
-            <MarkAsPaidButton
-              disabled={invoice!.status === "paid"}
-              sx={{ marginRight: "0 !important" }}
-            >
-              Mark as Paid
-            </MarkAsPaidButton>
-          </ModifyInvoiceActionContainer>
-        )}
+        <ModifyInvoiceActionContainer>
+          <EditInvoiceButton>Edit</EditInvoiceButton>
+          <DeleteInvoiceButton sx={{ marginTop: "21px", marginBottom: "22px" }}>
+            Delete
+          </DeleteInvoiceButton>
+          <MarkAsPaidButton
+            disabled={invoice!.status === "paid"}
+            sx={{ marginRight: "0 !important" }}
+          >
+            Mark as Paid
+          </MarkAsPaidButton>
+        </ModifyInvoiceActionContainer>
       </Container>
     </ThemeProvider>
   );

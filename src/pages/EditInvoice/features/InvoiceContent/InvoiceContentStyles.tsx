@@ -30,6 +30,20 @@ export const Description = styled(Box)(({ theme }) => ({
   },
 }));
 
+export const ClientInformationContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    flexDirection: "column",
+  },
+
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+  },
+}));
+
 export const ClientAddress = styled(Box)(() => ({
   "&": {
     display: "flex",
@@ -37,6 +51,12 @@ export const ClientAddress = styled(Box)(() => ({
     boxSizing: "border-box",
     textAlign: "start",
     paddingLeft: "24px",
+  },
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      marginLeft: "auto",
+      margin: "25px 32px 0 0",
+    },
   },
 }));
 
@@ -53,6 +73,16 @@ export const PaymentDatesContainer = styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
     boxSizing: "border-box",
+  },
+}));
+
+export const PaymentDueContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    flexDirection: "column",
+    boxSizing: "border-box",
+    textAlign: "start",
+    padding: "0 0 30px 24px",
   },
 }));
 
@@ -80,6 +110,31 @@ export const ItemContainer = styled(Box)(() => ({
     alignItems: "center",
     margin: "0px 24px 24px 24px",
     width: "100%",
+  },
+}));
+
+export const ItemInformationContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    flexDirection: "column",
+    boxSizing: "border-box",
+    textAlign: "start",
+    padding: "0",
+    marginLeft: "24px",
+  },
+}));
+
+export const QuantityAndCost = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 700,
+    color: theme.customPalette.darkBlueYonderToLavender,
+  },
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      display: "none",
+    },
   },
 }));
 
@@ -111,6 +166,38 @@ export const AmountDue = styled(Typography)(({ theme }) => ({
     fontSize: "0.813rem",
     fontFamily: "inherit",
     fontWeight: 500,
+  },
+}));
+
+export const CityOrPostCode = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 500,
+    color: theme.customPalette.darkBlueYonderToLavender,
+  },
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      textAlign: "end",
+    },
+  },
+}));
+
+export const SentToContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    flexDirection: "column",
+    boxSizing: "border-box",
+    textAlign: "start",
+    padding: "0px 0 30px 24px",
+  },
+
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      marginLeft: "auto",
+      marginRight: "132px",
+      paddingTop: "25px",
+    },
   },
 }));
 

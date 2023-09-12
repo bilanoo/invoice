@@ -51,4 +51,10 @@ export const ModifyInvoiceActionContainer = styled(Box)(({ theme }) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      display: "none",
+    },
+  },
 }));

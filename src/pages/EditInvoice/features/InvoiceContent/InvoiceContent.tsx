@@ -13,25 +13,33 @@ import {
   Total,
   AmountDue,
   AmountDueContainer,
+  ClientInformationContainer,
+  CityOrPostCode,
+  SentToContainer,
+  PaymentDueContainer,
+  ItemInformationContainer,
+  QuantityAndCost,
 } from "./InvoiceContentStyles";
 
 export const InvoiceContent = () => {
   return (
     <ContentContainer>
-      <GenericTextContainer>
-        <SmallText>
-          <span style={{ color: "#7E88C3" }}>#</span>
-          XM9141
-        </SmallText>
-        <Description>Graphic Design</Description>
-      </GenericTextContainer>
+      <ClientInformationContainer>
+        <GenericTextContainer sx={{ width: "fit-content" }}>
+          <SmallText>
+            <span style={{ color: "#7E88C3" }}>#</span>
+            XM9141
+          </SmallText>
+          <Description>Graphic Design</Description>
+        </GenericTextContainer>
 
-      <ClientAddress>
-        <Description>19 Union Terrace</Description>
-        <Description>London</Description>
-        <Description>E1 3EZ</Description>
-        <Description>United Kingdom</Description>
-      </ClientAddress>
+        <ClientAddress>
+          <Description>19 Union Terrace</Description>
+          <CityOrPostCode>London</CityOrPostCode>
+          <CityOrPostCode>E1 3EZ</CityOrPostCode>
+          <Description>United Kingdom</Description>
+        </ClientAddress>
+      </ClientInformationContainer>
 
       <InvoiceDatesAndBillingInformationContainer>
         <PaymentDatesContainer>
@@ -41,10 +49,10 @@ export const InvoiceContent = () => {
             </Description>
             <SmallText>21 Aug 2021</SmallText>
           </GenericTextContainer>
-          <GenericTextContainer sx={{ paddingTop: "0 !important" }}>
+          <PaymentDueContainer>
             <Description sx={{ marginBottom: "13px" }}>Payment Due</Description>
             <SmallText>20 Sep 2021</SmallText>
-          </GenericTextContainer>
+          </PaymentDueContainer>
         </PaymentDatesContainer>
 
         <GenericTextContainer sx={{ marginLeft: "62px" }}>
@@ -56,33 +64,25 @@ export const InvoiceContent = () => {
           <Description>United Kingdom</Description>
         </GenericTextContainer>
 
-        <GenericTextContainer sx={{ paddingTop: "0 !important" }}>
+        <SentToContainer>
           <Description sx={{ marginBottom: "13px" }}>Sent to</Description>
           <SmallText>alexgrim@mail.com</SmallText>
-        </GenericTextContainer>
+        </SentToContainer>
       </InvoiceDatesAndBillingInformationContainer>
 
       <InvoiceConstBreakdownContainer>
         <ItemContainer>
-          <GenericTextContainer
-            sx={{ padding: "0 !important", marginLeft: "24px" }}
-          >
+          <ItemInformationContainer>
             <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
-            <Description sx={{ fontWeight: "700 !important" }}>
-              1 x £ 156.00
-            </Description>
-          </GenericTextContainer>
+            <QuantityAndCost>1 x £ 156.00</QuantityAndCost>
+          </ItemInformationContainer>
           <SmallText sx={{ marginRight: "24px" }}>£ 156.00</SmallText>
         </ItemContainer>
         <ItemContainer>
-          <GenericTextContainer
-            sx={{ padding: "0 !important", marginLeft: "24px" }}
-          >
+          <ItemInformationContainer>
             <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
-            <Description sx={{ fontWeight: "700 !important" }}>
-              1 x £ 156.00
-            </Description>
-          </GenericTextContainer>
+            <QuantityAndCost>1 x £ 156.00</QuantityAndCost>
+          </ItemInformationContainer>
           <SmallText sx={{ marginRight: "24px" }}>£ 156.00</SmallText>
         </ItemContainer>
         <InvoiceTotalContainer>
