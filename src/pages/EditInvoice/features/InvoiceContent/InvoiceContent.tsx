@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { SmallText } from "../../../Homepage/features/InvoicesDetail/Invoice/SingleInvoiceStyles";
 
 import {
@@ -19,6 +20,14 @@ import {
   PaymentDueContainer,
   ItemInformationContainer,
   QuantityAndCost,
+  ItemHeading,
+  HeadingsContainer,
+  ItemName,
+  QuantityHeading,
+  PriceHeading,
+  TotalHeading,
+  PriceValue,
+  QuantityValue,
 } from "./InvoiceContentStyles";
 
 export const InvoiceContent = () => {
@@ -71,20 +80,35 @@ export const InvoiceContent = () => {
       </InvoiceDatesAndBillingInformationContainer>
 
       <InvoiceConstBreakdownContainer>
+        <HeadingsContainer>
+          <ItemName>Item Name</ItemName>
+          <QuantityHeading>QTY.</QuantityHeading>
+          <PriceHeading>Price</PriceHeading>
+          <TotalHeading>Total</TotalHeading>
+        </HeadingsContainer>
         <ItemContainer>
           <ItemInformationContainer>
-            <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
-            <QuantityAndCost>1 x £ 156.00</QuantityAndCost>
+            <Box style={{ display: "flex", flexDirection: "column" }}>
+              <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
+              <QuantityAndCost>1 x £ 156.00</QuantityAndCost>
+            </Box>
+            <QuantityValue>1</QuantityValue>
+            <PriceValue>£ 156.00</PriceValue>
+            <SmallText sx={{ marginRight: "32px" }}>£ 156.00</SmallText>
           </ItemInformationContainer>
-          <SmallText sx={{ marginRight: "24px" }}>£ 156.00</SmallText>
         </ItemContainer>
         <ItemContainer>
           <ItemInformationContainer>
-            <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
-            <QuantityAndCost>1 x £ 156.00</QuantityAndCost>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
+              <QuantityAndCost>1 x £ 156.00</QuantityAndCost>
+            </div>
+            <QuantityValue>1</QuantityValue>
+            <PriceValue>£ 156.00</PriceValue>
+            <SmallText sx={{ marginRight: "32px" }}>£ 156.00</SmallText>
           </ItemInformationContainer>
-          <SmallText sx={{ marginRight: "24px" }}>£ 156.00</SmallText>
         </ItemContainer>
+
         <InvoiceTotalContainer>
           <AmountDueContainer>
             <AmountDue>Amount Due</AmountDue>

@@ -96,8 +96,11 @@ export const InvoiceConstBreakdownContainer = styled(Box)(({ theme }) => ({
     margin: "0 24px 24px 24px",
     alignItems: "center",
     justifyContent: "center",
-    "& > :first-child": {
-      marginTop: "24px",
+
+    "@media only screen and (max-width: 767px)": {
+      "& > :nth-child(2)": {
+        marginTop: "24px !important",
+      },
     },
   },
 }));
@@ -116,11 +119,21 @@ export const ItemContainer = styled(Box)(() => ({
 export const ItemInformationContainer = styled(Box)(() => ({
   "&": {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    alignItems: "center",
     boxSizing: "border-box",
     textAlign: "start",
     padding: "0",
     marginLeft: "24px",
+  },
+
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      flexDirection: "row",
+      width: "100%",
+    },
   },
 }));
 
@@ -135,6 +148,105 @@ export const QuantityAndCost = styled(Typography)(({ theme }) => ({
     "&": {
       display: "none",
     },
+  },
+}));
+
+export const HeadingsContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    whiteSpace: "nowrap",
+    width: "100%",
+    marginTop: "23px",
+  },
+  "@media only screen and (max-width: 767px)": {
+    "&": {
+      display: "none",
+    },
+  },
+}));
+
+export const ItemHeading = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 500,
+    color: theme.customPalette.darkBlueYonderToLavender,
+    marginBottom: "32px",
+  },
+}));
+
+export const ItemName = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 500,
+    color: theme.customPalette.darkBlueYonderToLavender,
+    margin: "0px auto 32px 24px",
+  },
+}));
+
+export const QuantityHeading = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 500,
+    color: theme.customPalette.darkBlueYonderToLavender,
+    marginRight: "92px",
+  },
+}));
+
+export const QuantityValue = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 700,
+    color: theme.customPalette.darkBlueYonderToLavender,
+    marginRight: "85px",
+    marginLeft: "auto",
+  },
+
+  "@media only screen and (max-width: 767px)": {
+    "&": {
+      display: "none",
+    },
+  },
+}));
+
+export const PriceHeading = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 500,
+    color: theme.customPalette.darkBlueYonderToLavender,
+    marginRight: "111px",
+  },
+}));
+
+export const PriceValue = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 700,
+    color: theme.customPalette.darkBlueYonderToLavender,
+    marginRight: "81px",
+  },
+
+  "@media only screen and (max-width: 767px)": {
+    "&": {
+      display: "none",
+    },
+  },
+}));
+
+export const TotalHeading = styled(Typography)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 500,
+    color: theme.customPalette.darkBlueYonderToLavender,
+    marginRight: "34px",
   },
 }));
 
@@ -157,6 +269,12 @@ export const AmountDueContainer = styled(Box)(() => ({
     gap: "74px",
     margin: "26px 24px 22px 24px",
     whiteSpace: "nowrap",
+  },
+
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      justifyContent: "space-between",
+    },
   },
 }));
 
@@ -207,5 +325,10 @@ export const Total = styled(Typography)(({ theme }) => ({
     fontSize: "1.5rem",
     fontFamily: "inherit",
     fontWeight: 700,
+  },
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      marginRight: "6px",
+    },
   },
 }));
