@@ -6,7 +6,13 @@ import {
   Description,
   GenericTextContainer,
   InvoiceDatesAndBillingInformationContainer,
+  InvoiceConstBreakdownContainer,
+  ItemContainer,
   PaymentDatesContainer,
+  InvoiceTotalContainer,
+  Total,
+  AmountDue,
+  AmountDueContainer,
 } from "./InvoiceContentStyles";
 
 export const InvoiceContent = () => {
@@ -55,6 +61,37 @@ export const InvoiceContent = () => {
           <SmallText>alexgrim@mail.com</SmallText>
         </GenericTextContainer>
       </InvoiceDatesAndBillingInformationContainer>
+
+      <InvoiceConstBreakdownContainer>
+        <ItemContainer>
+          <GenericTextContainer
+            sx={{ padding: "0 !important", marginLeft: "24px" }}
+          >
+            <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
+            <Description sx={{ fontWeight: "700 !important" }}>
+              1 x £ 156.00
+            </Description>
+          </GenericTextContainer>
+          <SmallText sx={{ marginRight: "24px" }}>£ 156.00</SmallText>
+        </ItemContainer>
+        <ItemContainer>
+          <GenericTextContainer
+            sx={{ padding: "0 !important", marginLeft: "24px" }}
+          >
+            <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
+            <Description sx={{ fontWeight: "700 !important" }}>
+              1 x £ 156.00
+            </Description>
+          </GenericTextContainer>
+          <SmallText sx={{ marginRight: "24px" }}>£ 156.00</SmallText>
+        </ItemContainer>
+        <InvoiceTotalContainer>
+          <AmountDueContainer>
+            <AmountDue>Amount Due</AmountDue>
+            <Total>£ 560.00</Total>
+          </AmountDueContainer>
+        </InvoiceTotalContainer>
+      </InvoiceConstBreakdownContainer>
     </ContentContainer>
   );
 };
