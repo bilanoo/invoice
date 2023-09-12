@@ -47,8 +47,9 @@ export const EditInvoice = () => {
             </Link>
           </PreviousPageContainer>
           <Navbar status={invoice!.status} />
+
+          <InvoiceContent />
         </ContentContainer>
-        <InvoiceContent />
       </Container>
     </ThemeProvider>
   );

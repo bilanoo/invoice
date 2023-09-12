@@ -11,7 +11,7 @@ export const ContentContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const IdAndDescriptionContainer = styled(Box)(() => ({
+export const GenericTextContainer = styled(Box)(() => ({
   "&": {
     display: "flex",
     flexDirection: "column",
@@ -37,5 +37,21 @@ export const ClientAddress = styled(Box)(() => ({
     boxSizing: "border-box",
     textAlign: "start",
     paddingLeft: "24px",
+  },
+}));
+
+export const InvoiceDatesAndBillingInformationContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    boxSizing: "border-box",
+    flexWrap: "wrap",
+  },
+}));
+
+export const PaymentDatesContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    flexDirection: "column",
+    boxSizing: "border-box",
   },
 }));

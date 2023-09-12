@@ -5,7 +5,7 @@ import {
   DueDateText,
   IdAndNameContainer,
   InvoiceAmount,
-  InvoiceId,
+  SmallText,
   InvoicePaymentInformation,
   SmallInformationText,
 } from "./SingleInvoiceStyles";
@@ -28,10 +28,10 @@ export const Invoice = ({
   return (
     <Container>
       <IdAndNameContainer>
-        <InvoiceId>
+        <SmallText>
           <span style={{ color: "#7E88C3" }}>#</span>
           {invoiceId}
-        </InvoiceId>
+        </SmallText>
         <SmallInformationText>{clientName}</SmallInformationText>
       </IdAndNameContainer>
       <InvoicePaymentInformation>

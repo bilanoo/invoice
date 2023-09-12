@@ -29,7 +29,7 @@ export const IdAndNameContainer = styled(Box)(() => ({
   },
 }));
 
-export const InvoiceId = styled(Typography)(({ theme }) => ({
+export const SmallText = styled(Typography)(({ theme }) => ({
   "&": {
     color: theme.palette.text.primary,
     fontSize: "0.938rem",
