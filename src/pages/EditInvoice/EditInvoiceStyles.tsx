@@ -41,3 +41,14 @@ export const ContentContainer = styled(Box)(() => ({
     },
   },
 }));
+
+export const ModifyInvoiceActionContainer = styled(Box)(({ theme }) => ({
+  "&": {
+    display: "flex",
+    boxSizing: "border-box",
+    gap: "8px",
+    backgroundColor: theme.customPalette.invoiceBackgroundColor,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+}));
