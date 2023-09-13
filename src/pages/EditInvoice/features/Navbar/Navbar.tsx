@@ -1,10 +1,8 @@
 import { InvoiceStatus } from "../../../Homepage/features/InvoiceStatus/InvoiceStatus";
+import { InvoiceActionsForModification } from "../InvoiceModificationActions/InvoiceActionsForModification";
 import {
   Container,
-  DeleteInvoiceButton,
-  EditInvoiceButton,
   InvoiceStatusContainer,
-  MarkAsPaidButton,
   ModifyInvoiceContainer,
   StatusText,
 } from "./NavbarStyles";
@@ -12,9 +10,14 @@ import {
 interface NavbarProps {
   status: string;
   markInvoiceAsPaid: () => void;
+  deleteInvoice: () => void;
 }
 
-export const Navbar = ({ status, markInvoiceAsPaid }: NavbarProps) => {
+export const Navbar = ({
+  status,
+  markInvoiceAsPaid,
+  deleteInvoice,
+}: NavbarProps) => {
   return (
     <Container>
       <StatusText>Status</StatusText>
@@ -23,14 +26,11 @@ export const Navbar = ({ status, markInvoiceAsPaid }: NavbarProps) => {
       </InvoiceStatusContainer>
 
       <ModifyInvoiceContainer>
-        <EditInvoiceButton>Edit</EditInvoiceButton>
-        <DeleteInvoiceButton>Delete</DeleteInvoiceButton>
-        <MarkAsPaidButton
-          disabled={status === "paid"}
-          onClick={markInvoiceAsPaid}
-        >
-          Mark as Paid
-        </MarkAsPaidButton>
+        <InvoiceActionsForModification
+          status={status}
+          markInvoiceAsPaid={markInvoiceAsPaid}
+          deleteInvoice={deleteInvoice}
+        />
       </ModifyInvoiceContainer>
     </Container>
   );

@@ -47,10 +47,9 @@ export const InvoiceNavbar = () => {
   };
 
   useEffect(() => {
-    console.log(filter);
     dispatch({ type: "invoice/filter", payload: filter });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter]);
+  }, []);
 
   return (
     <Container>

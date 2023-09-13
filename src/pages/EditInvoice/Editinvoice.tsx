@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
-import { useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { getDesignTokens } from "../../theme";
 import { Container } from "../Homepage/HomepageStyles";
 import { Header } from "../../Header/Header";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   ContentContainer,
   ModifyInvoiceActionContainer,
@@ -14,14 +14,13 @@ import {
 import BackArrow from "../../assets/back-arrow-icon.svg";
 import { Navbar } from "./features/Navbar/Navbar";
 import { InvoiceContent } from "./features/InvoiceContent/InvoiceContent";
-import {
-  DeleteInvoiceButton,
-  EditInvoiceButton,
-  MarkAsPaidButton,
-} from "./features/Navbar/NavbarStyles";
+import { InvoiceActionsForModification } from "./features/InvoiceModificationActions/InvoiceActionsForModification";
 
 export const EditInvoice = () => {
   const { id } = useParams();
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const allInvoicesData = useAppSelector((state) => state.invoice.value);
   const [invoice, setInvoice] = useState(
@@ -37,12 +36,16 @@ export const EditInvoice = () => {
     [lightOrDarkMode]
   );
 
-  console.log(invoice);
   const markInvoiceAsPaid = () => {
     setInvoice((prevState) => ({
       ...prevState,
       status: "paid",
     }));
+  };
+
+  const deleteInvoice = () => {
+    dispatch({ type: "invoice/delete", payload: id });
+    navigate("/");
   };
 
   return (
@@ -62,23 +65,18 @@ export const EditInvoice = () => {
           <Navbar
             status={invoice!.status}
             markInvoiceAsPaid={markInvoiceAsPaid}
+            deleteInvoice={deleteInvoice}
           />
 
           <InvoiceContent invoice={invoice} />
         </ContentContainer>
 
         <ModifyInvoiceActionContainer>
-          <EditInvoiceButton>Edit</EditInvoiceButton>
-          <DeleteInvoiceButton sx={{ marginTop: "21px", marginBottom: "22px" }}>
-            Delete
-          </DeleteInvoiceButton>
-          <MarkAsPaidButton
-            disabled={invoice!.status === "paid"}
-            sx={{ marginRight: "0 !important" }}
-            onClick={markInvoiceAsPaid}
-          >
-            Mark as Paid
-          </MarkAsPaidButton>
+          <InvoiceActionsForModification
+            status={invoice.status}
+            markInvoiceAsPaid={markInvoiceAsPaid}
+            deleteInvoice={deleteInvoice}
+          />
         </ModifyInvoiceActionContainer>
       </Container>
     </ThemeProvider>

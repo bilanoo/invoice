@@ -27,6 +27,11 @@ export const invoiceSlice = createSlice({
         action.payload.includes(invoice.status)
       );
     },
+    delete: (state, action) => {
+      state.value = state.value.filter(
+        (invoice) => invoice.id !== action.payload
+      );
+    },
   },
 });
 
