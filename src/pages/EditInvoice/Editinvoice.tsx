@@ -38,6 +38,13 @@ export const EditInvoice = () => {
   );
 
   console.log(invoice);
+  const markInvoiceAsPaid = () => {
+    setInvoice((prevState) => ({
+      ...prevState,
+      status: "paid",
+    }));
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -52,7 +59,10 @@ export const EditInvoice = () => {
               </PreviousPageButton>
             </Link>
           </PreviousPageContainer>
-          <Navbar status={invoice!.status} />
+          <Navbar
+            status={invoice!.status}
+            markInvoiceAsPaid={markInvoiceAsPaid}
+          />
 
           <InvoiceContent invoice={invoice} />
         </ContentContainer>
@@ -65,6 +75,7 @@ export const EditInvoice = () => {
           <MarkAsPaidButton
             disabled={invoice!.status === "paid"}
             sx={{ marginRight: "0 !important" }}
+            onClick={markInvoiceAsPaid}
           >
             Mark as Paid
           </MarkAsPaidButton>

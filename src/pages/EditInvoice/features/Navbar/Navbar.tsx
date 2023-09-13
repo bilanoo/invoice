@@ -12,9 +12,10 @@ import {
 
 interface NavbarProps {
   status: string;
+  markInvoiceAsPaid: () => void;
 }
 
-export const Navbar = ({ status }: NavbarProps) => {
+export const Navbar = ({ status, markInvoiceAsPaid }: NavbarProps) => {
   const { width } = useWindowDimensions();
 
   return (
@@ -27,7 +28,10 @@ export const Navbar = ({ status }: NavbarProps) => {
         <ModifyInvoiceContainer>
           <EditInvoiceButton>Edit</EditInvoiceButton>
           <DeleteInvoiceButton>Delete</DeleteInvoiceButton>
-          <MarkAsPaidButton disabled={status === "paid"}>
+          <MarkAsPaidButton
+            disabled={status === "paid"}
+            onClick={markInvoiceAsPaid}
+          >
             Mark as Paid
           </MarkAsPaidButton>
         </ModifyInvoiceContainer>
