@@ -103,7 +103,13 @@ export const InvoiceContent = ({ invoice }: InvoiceContentProps) => {
               {invoice.items.map((item) => (
                 <TableRow key={item.name}>
                   <ItemTableCell>
-                    <Box style={{ display: "flex", flexDirection: "column" }}>
+                    <Box
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        fontFamily: "inherit",
+                      }}
+                    >
                       <SmallText sx={{ marginBottom: "8px" }}>
                         {item.name}
                       </SmallText>

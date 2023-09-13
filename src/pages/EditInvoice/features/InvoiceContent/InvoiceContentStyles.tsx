@@ -220,6 +220,7 @@ export const TableHeading = styled(TableCell)(({ theme }) => ({
 export const ItemTableCell = styled(TableCell)(() => ({
   "&": {
     borderBottom: "none",
+    fontFamily: "inherit",
   },
 }));
 
