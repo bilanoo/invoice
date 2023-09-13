@@ -1,4 +1,4 @@
-import { Box, Typography, styled } from "@mui/material";
+import { Box, TableCell, TableRow, Typography, styled } from "@mui/material";
 
 export const ContentContainer = styled(Box)(({ theme }) => ({
   "&": {
@@ -98,41 +98,9 @@ export const InvoiceConstBreakdownContainer = styled(Box)(({ theme }) => ({
     justifyContent: "center",
 
     "@media only screen and (max-width: 767px)": {
-      "& > :nth-child(2)": {
+      "& > div:nth-of-type(2)": {
         marginTop: "24px !important",
       },
-    },
-  },
-}));
-
-export const ItemContainer = styled(Box)(() => ({
-  "&": {
-    display: "flex",
-    boxSizing: "border-box",
-    justifyContent: "space-between",
-    alignItems: "center",
-    margin: "0px 24px 24px 24px",
-    width: "100%",
-  },
-}));
-
-export const ItemInformationContainer = styled(Box)(() => ({
-  "&": {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-    alignItems: "center",
-    boxSizing: "border-box",
-    textAlign: "start",
-    padding: "0",
-    marginLeft: "24px",
-  },
-
-  "@media only screen and (min-width: 768px)": {
-    "&": {
-      flexDirection: "row",
-      width: "100%",
     },
   },
 }));
@@ -151,102 +119,13 @@ export const QuantityAndCost = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const HeadingsContainer = styled(Box)(() => ({
-  "&": {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    whiteSpace: "nowrap",
-    width: "100%",
-    marginTop: "23px",
-  },
-  "@media only screen and (max-width: 767px)": {
-    "&": {
-      display: "none",
-    },
-  },
-}));
-
-export const ItemHeading = styled(Typography)(({ theme }) => ({
+export const ItemHeading = styled(TableCell)(({ theme }) => ({
   "&": {
     fontSize: "0.813rem",
     fontFamily: "inherit",
     fontWeight: 500,
     color: theme.customPalette.darkBlueYonderToLavender,
     marginBottom: "32px",
-  },
-}));
-
-export const ItemName = styled(Typography)(({ theme }) => ({
-  "&": {
-    fontSize: "0.813rem",
-    fontFamily: "inherit",
-    fontWeight: 500,
-    color: theme.customPalette.darkBlueYonderToLavender,
-    margin: "0px auto 32px 24px",
-  },
-}));
-
-export const QuantityHeading = styled(Typography)(({ theme }) => ({
-  "&": {
-    fontSize: "0.813rem",
-    fontFamily: "inherit",
-    fontWeight: 500,
-    color: theme.customPalette.darkBlueYonderToLavender,
-    marginRight: "92px",
-  },
-}));
-
-export const QuantityValue = styled(Typography)(({ theme }) => ({
-  "&": {
-    fontSize: "0.813rem",
-    fontFamily: "inherit",
-    fontWeight: 700,
-    color: theme.customPalette.darkBlueYonderToLavender,
-    marginRight: "85px",
-    marginLeft: "auto",
-  },
-
-  "@media only screen and (max-width: 767px)": {
-    "&": {
-      display: "none",
-    },
-  },
-}));
-
-export const PriceHeading = styled(Typography)(({ theme }) => ({
-  "&": {
-    fontSize: "0.813rem",
-    fontFamily: "inherit",
-    fontWeight: 500,
-    color: theme.customPalette.darkBlueYonderToLavender,
-    marginRight: "111px",
-  },
-}));
-
-export const PriceValue = styled(Typography)(({ theme }) => ({
-  "&": {
-    fontSize: "0.813rem",
-    fontFamily: "inherit",
-    fontWeight: 700,
-    color: theme.customPalette.darkBlueYonderToLavender,
-    marginRight: "81px",
-  },
-
-  "@media only screen and (max-width: 767px)": {
-    "&": {
-      display: "none",
-    },
-  },
-}));
-
-export const TotalHeading = styled(Typography)(({ theme }) => ({
-  "&": {
-    fontSize: "0.813rem",
-    fontFamily: "inherit",
-    fontWeight: 500,
-    color: theme.customPalette.darkBlueYonderToLavender,
-    marginRight: "34px",
   },
 }));
 
@@ -265,9 +144,9 @@ export const AmountDueContainer = styled(Box)(() => ({
   "&": {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
     gap: "74px",
-    margin: "26px 24px 22px 24px",
+    margin: "26px 16px 22px 16px",
     whiteSpace: "nowrap",
   },
 
@@ -326,9 +205,44 @@ export const Total = styled(Typography)(({ theme }) => ({
     fontFamily: "inherit",
     fontWeight: 700,
   },
-  "@media only screen and (min-width: 768px)": {
+}));
+
+export const TableHeading = styled(TableCell)(({ theme }) => ({
+  "&": {
+    fontSize: "0.813rem",
+    fontFamily: "inherit",
+    fontWeight: 500,
+    color: theme.customPalette.darkBlueYonderToLavender,
+    borderBottom: "none",
+  },
+}));
+
+export const ItemTableCell = styled(TableCell)(() => ({
+  "&": {
+    borderBottom: "none",
+  },
+}));
+
+export const GenericTableCell = styled(TableCell)(({ theme }) => ({
+  "&": {
+    color: theme.palette.text.primary,
+    fontSize: "0.938rem",
+    fontFamily: "inherit",
+    fontWeight: 700,
+    textAlign: "end",
+    borderBottom: "none",
+  },
+  "@media only screen and (max-width: 767px)": {
     "&": {
-      marginRight: "6px",
+      display: "none",
+    },
+  },
+}));
+
+export const HeadingRow = styled(TableRow)(() => ({
+  "@media only screen and (max-width: 767px)": {
+    "&": {
+      display: "none",
     },
   },
 }));

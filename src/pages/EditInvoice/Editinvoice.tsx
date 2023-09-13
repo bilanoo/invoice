@@ -54,7 +54,7 @@ export const EditInvoice = () => {
           </PreviousPageContainer>
           <Navbar status={invoice!.status} />
 
-          <InvoiceContent />
+          <InvoiceContent invoice={invoice} />
         </ContentContainer>
 
         <ModifyInvoiceActionContainer>

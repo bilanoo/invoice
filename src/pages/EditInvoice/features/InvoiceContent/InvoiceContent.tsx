@@ -1,4 +1,11 @@
-import { Box } from "@mui/material";
+import {
+  Box,
+  Table,
+  TableBody,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { SmallText } from "../../../Homepage/features/InvoicesDetail/Invoice/SingleInvoiceStyles";
 
 import {
@@ -8,7 +15,6 @@ import {
   GenericTextContainer,
   InvoiceDatesAndBillingInformationContainer,
   InvoiceConstBreakdownContainer,
-  ItemContainer,
   PaymentDatesContainer,
   InvoiceTotalContainer,
   Total,
@@ -18,35 +24,35 @@ import {
   CityOrPostCode,
   SentToContainer,
   PaymentDueContainer,
-  ItemInformationContainer,
   QuantityAndCost,
-  ItemHeading,
-  HeadingsContainer,
-  ItemName,
-  QuantityHeading,
-  PriceHeading,
-  TotalHeading,
-  PriceValue,
-  QuantityValue,
+  ItemTableCell,
+  TableHeading,
+  HeadingRow,
+  GenericTableCell,
 } from "./InvoiceContentStyles";
+import { Invoice } from "../../../../data";
 
-export const InvoiceContent = () => {
+interface InvoiceContentProps {
+  invoice: Invoice;
+}
+
+export const InvoiceContent = ({ invoice }: InvoiceContentProps) => {
   return (
     <ContentContainer>
       <ClientInformationContainer>
         <GenericTextContainer sx={{ width: "fit-content" }}>
           <SmallText>
             <span style={{ color: "#7E88C3" }}>#</span>
-            XM9141
+            {invoice.id}
           </SmallText>
-          <Description>Graphic Design</Description>
+          <Description>{invoice.description}</Description>
         </GenericTextContainer>
 
         <ClientAddress>
-          <Description>19 Union Terrace</Description>
-          <CityOrPostCode>London</CityOrPostCode>
-          <CityOrPostCode>E1 3EZ</CityOrPostCode>
-          <Description>United Kingdom</Description>
+          <Description>{invoice.clientAddress.street}</Description>
+          <CityOrPostCode>{invoice.clientAddress.city}</CityOrPostCode>
+          <CityOrPostCode>{invoice.clientAddress.postCode}</CityOrPostCode>
+          <CityOrPostCode>{invoice.clientAddress.country}</CityOrPostCode>
         </ClientAddress>
       </ClientInformationContainer>
 
@@ -56,63 +62,91 @@ export const InvoiceContent = () => {
             <Description sx={{ marginBottom: "13px" }}>
               Invoice Date
             </Description>
-            <SmallText>21 Aug 2021</SmallText>
+            <SmallText>{invoice.createdAt}</SmallText>
           </GenericTextContainer>
           <PaymentDueContainer>
             <Description sx={{ marginBottom: "13px" }}>Payment Due</Description>
-            <SmallText>20 Sep 2021</SmallText>
+            <SmallText>{invoice.paymentDue}</SmallText>
           </PaymentDueContainer>
         </PaymentDatesContainer>
 
         <GenericTextContainer sx={{ marginLeft: "62px" }}>
           <Description sx={{ marginBottom: "13px" }}>Bill To</Description>
-          <SmallText sx={{ marginBottom: "7px" }}>Alex Grim</SmallText>
-          <Description>84 Church Way</Description>
-          <Description>Bradford</Description>
-          <Description>BD1 9PB</Description>
-          <Description>United Kingdom</Description>
+          <SmallText sx={{ marginBottom: "7px" }}>
+            {invoice.clientName}
+          </SmallText>
+          <Description>{invoice.senderAddress.street}</Description>
+          <Description>{invoice.senderAddress.city}</Description>
+          <Description>{invoice.senderAddress.postCode}</Description>
+          <Description>{invoice.senderAddress.country}</Description>
         </GenericTextContainer>
 
         <SentToContainer>
           <Description sx={{ marginBottom: "13px" }}>Sent to</Description>
-          <SmallText>alexgrim@mail.com</SmallText>
+          <SmallText>{invoice.clientEmail}</SmallText>
         </SentToContainer>
       </InvoiceDatesAndBillingInformationContainer>
 
       <InvoiceConstBreakdownContainer>
-        <HeadingsContainer>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <HeadingRow>
+                <TableHeading>Item Name</TableHeading>
+                <TableHeading align="right">QTY.</TableHeading>
+                <TableHeading align="right">Price</TableHeading>
+                <TableHeading align="right">Total</TableHeading>
+              </HeadingRow>
+            </TableHead>
+            <TableBody>
+              {invoice.items.map((item) => (
+                <TableRow key={item.name}>
+                  <ItemTableCell>
+                    <Box style={{ display: "flex", flexDirection: "column" }}>
+                      <SmallText sx={{ marginBottom: "8px" }}>
+                        {item.name}
+                      </SmallText>
+                      <QuantityAndCost>1 x £ {item.price}</QuantityAndCost>
+                    </Box>
+                  </ItemTableCell>
+                  <GenericTableCell align="right">
+                    {item.quantity}
+                  </GenericTableCell>
+                  <GenericTableCell align="right">
+                    £ {item.price}
+                  </GenericTableCell>
+                  <ItemTableCell>
+                    <SmallText align="right">£ {item.total}</SmallText>
+                  </ItemTableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        {/* <HeadingsContainer>
           <ItemName>Item Name</ItemName>
           <QuantityHeading>QTY.</QuantityHeading>
           <PriceHeading>Price</PriceHeading>
           <TotalHeading>Total</TotalHeading>
         </HeadingsContainer>
-        <ItemContainer>
-          <ItemInformationContainer>
-            <Box style={{ display: "flex", flexDirection: "column" }}>
-              <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
-              <QuantityAndCost>1 x £ 156.00</QuantityAndCost>
-            </Box>
-            <QuantityValue>1</QuantityValue>
-            <PriceValue>£ 156.00</PriceValue>
-            <SmallText sx={{ marginRight: "32px" }}>£ 156.00</SmallText>
-          </ItemInformationContainer>
-        </ItemContainer>
-        <ItemContainer>
-          <ItemInformationContainer>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <SmallText sx={{ marginBottom: "8px" }}>Banner Design</SmallText>
-              <QuantityAndCost>1 x £ 156.00</QuantityAndCost>
-            </div>
-            <QuantityValue>1</QuantityValue>
-            <PriceValue>£ 156.00</PriceValue>
-            <SmallText sx={{ marginRight: "32px" }}>£ 156.00</SmallText>
-          </ItemInformationContainer>
-        </ItemContainer>
+        {invoice.items.map((item) => (
+          <ItemContainer key={item.name}>
+            <ItemInformationContainer>
+              <Box style={{ display: "flex", flexDirection: "column" }}>
+                <SmallText sx={{ marginBottom: "8px" }}>{item.name}</SmallText>
+                <QuantityAndCost>1 x £ {item.price}</QuantityAndCost>
+              </Box>
+              <QuantityValue>{item.quantity}</QuantityValue>
+              <PriceValue>£ {item.price}</PriceValue>
+              <SmallText sx={{ marginRight: "32px" }}>£ {item.total}</SmallText>
+            </ItemInformationContainer>
+          </ItemContainer>
+        ))} */}
 
         <InvoiceTotalContainer>
           <AmountDueContainer>
             <AmountDue>Amount Due</AmountDue>
-            <Total>£ 560.00</Total>
+            <Total>£ {invoice.total}</Total>
           </AmountDueContainer>
         </InvoiceTotalContainer>
       </InvoiceConstBreakdownContainer>
