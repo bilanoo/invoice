@@ -1,4 +1,3 @@
-import useWindowDimensions from "../../../../utils";
 import { InvoiceStatus } from "../../../Homepage/features/InvoiceStatus/InvoiceStatus";
 import {
   Container,
@@ -16,26 +15,23 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ status, markInvoiceAsPaid }: NavbarProps) => {
-  const { width } = useWindowDimensions();
-
   return (
     <Container>
       <StatusText>Status</StatusText>
       <InvoiceStatusContainer>
         <InvoiceStatus status={status} />
       </InvoiceStatusContainer>
-      {width >= 768 && (
-        <ModifyInvoiceContainer>
-          <EditInvoiceButton>Edit</EditInvoiceButton>
-          <DeleteInvoiceButton>Delete</DeleteInvoiceButton>
-          <MarkAsPaidButton
-            disabled={status === "paid"}
-            onClick={markInvoiceAsPaid}
-          >
-            Mark as Paid
-          </MarkAsPaidButton>
-        </ModifyInvoiceContainer>
-      )}
+
+      <ModifyInvoiceContainer>
+        <EditInvoiceButton>Edit</EditInvoiceButton>
+        <DeleteInvoiceButton>Delete</DeleteInvoiceButton>
+        <MarkAsPaidButton
+          disabled={status === "paid"}
+          onClick={markInvoiceAsPaid}
+        >
+          Mark as Paid
+        </MarkAsPaidButton>
+      </ModifyInvoiceContainer>
     </Container>
   );
 };

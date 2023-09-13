@@ -49,6 +49,11 @@ export const ModifyInvoiceContainer = styled(Box)(() => ({
       paddingLeft: "198px",
     },
   },
+  "@media only screen and (max-width: 767px)": {
+    "&": {
+      display: "none",
+    },
+  },
 }));
 
 export const EditInvoiceButton = styled(Button)(({ theme }) => ({
