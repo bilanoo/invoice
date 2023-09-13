@@ -11,7 +11,7 @@ export const Container = styled(Box)(({ theme }) => ({
   },
   "@media (min-width: 992px)": {
     "&": {
-      height: "100%",
+      height: "auto",
       width: "103px",
       flexDirection: "column",
     },

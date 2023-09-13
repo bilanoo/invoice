@@ -16,6 +16,7 @@ export const Container = styled(Box)(({ theme }) => ({
   "@media only screen and (min-width: 992px)": {
     "&": {
       flexDirection: "row",
+      height: "auto",
     },
   },
 }));
