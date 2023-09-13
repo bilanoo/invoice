@@ -15,6 +15,7 @@ import BackArrow from "../../assets/back-arrow-icon.svg";
 import { Navbar } from "./features/Navbar/Navbar";
 import { InvoiceContent } from "./features/InvoiceContent/InvoiceContent";
 import { InvoiceActionsForModification } from "./features/InvoiceModificationActions/InvoiceActionsForModification";
+import { Invoice } from "../../data";
 
 export const EditInvoice = () => {
   const { id } = useParams();
@@ -23,8 +24,8 @@ export const EditInvoice = () => {
   const navigate = useNavigate();
 
   const allInvoicesData = useAppSelector((state) => state.invoice.value);
-  const [invoice, setInvoice] = useState(
-    allInvoicesData.find((invoice) => invoice.id === id)
+  const [invoice, setInvoice] = useState<Invoice>(
+    allInvoicesData.find((invoice) => invoice.id === id)!
   );
 
   const lightOrDarkMode = useAppSelector(
