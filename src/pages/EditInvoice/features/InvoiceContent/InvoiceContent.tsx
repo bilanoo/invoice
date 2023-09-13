@@ -29,6 +29,7 @@ import {
   TableHeading,
   HeadingRow,
   GenericTableCell,
+  TotalValueTableCell,
 } from "./InvoiceContentStyles";
 import { Invoice } from "../../../../data";
 
@@ -115,33 +116,12 @@ export const InvoiceContent = ({ invoice }: InvoiceContentProps) => {
                   <GenericTableCell align="right">
                     £ {item.price}
                   </GenericTableCell>
-                  <ItemTableCell>
-                    <SmallText align="right">£ {item.total}</SmallText>
-                  </ItemTableCell>
+                  <TotalValueTableCell>£ {item.total}</TotalValueTableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-        {/* <HeadingsContainer>
-          <ItemName>Item Name</ItemName>
-          <QuantityHeading>QTY.</QuantityHeading>
-          <PriceHeading>Price</PriceHeading>
-          <TotalHeading>Total</TotalHeading>
-        </HeadingsContainer>
-        {invoice.items.map((item) => (
-          <ItemContainer key={item.name}>
-            <ItemInformationContainer>
-              <Box style={{ display: "flex", flexDirection: "column" }}>
-                <SmallText sx={{ marginBottom: "8px" }}>{item.name}</SmallText>
-                <QuantityAndCost>1 x £ {item.price}</QuantityAndCost>
-              </Box>
-              <QuantityValue>{item.quantity}</QuantityValue>
-              <PriceValue>£ {item.price}</PriceValue>
-              <SmallText sx={{ marginRight: "32px" }}>£ {item.total}</SmallText>
-            </ItemInformationContainer>
-          </ItemContainer>
-        ))} */}
 
         <InvoiceTotalContainer>
           <AmountDueContainer>

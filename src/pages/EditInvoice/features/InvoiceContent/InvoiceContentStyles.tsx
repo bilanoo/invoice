@@ -239,6 +239,17 @@ export const GenericTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
+export const TotalValueTableCell = styled(TableCell)(({ theme }) => ({
+  "&": {
+    color: theme.palette.text.primary,
+    fontSize: "0.938rem",
+    fontFamily: "inherit",
+    fontWeight: 700,
+    textAlign: "end",
+    borderBottom: "none",
+  },
+}));
+
 export const HeadingRow = styled(TableRow)(() => ({
   "@media only screen and (max-width: 767px)": {
     "&": {
