@@ -47,9 +47,12 @@ export const InvoiceNavbar = () => {
   };
 
   useEffect(() => {
-    dispatch({ type: "invoice/filter", payload: filter });
+    if (filter.length !== 0) {
+      dispatch({ type: "invoice/filter", payload: filter });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [filter]);
 
   return (
     <Container>
