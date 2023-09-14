@@ -19,12 +19,12 @@ export const invoiceSlice = createSlice({
       state.value = action.payload;
     },
     filter: (state, action) => {
-      if (action.payload.length === 0) {
-        state.value = invoiceData;
+      if (action.payload.filter.length === 0) {
+        state.value = action.payload.prevStateRef.current;
         return;
       }
-      state.value = invoiceData.filter((invoice) =>
-        action.payload.includes(invoice.status)
+      state.value = action.payload.prevStateRef.current.filter(
+        (invoice: Invoice) => action.payload.filter.includes(invoice.status)
       );
     },
     delete: (state, action) => {

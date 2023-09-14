@@ -12,10 +12,10 @@ import {
 } from "./InvoiceNavbarStyles";
 import DropdownArrow from "../assets/icon-arrow-down.svg";
 import PlusIcon from "../assets/plus-icon.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormControlLabel, MenuItem } from "@mui/material";
 import useWindowDimensions from "../utils";
-import { useAppDispatch } from "../pages/hooks";
+import { useAppDispatch, useAppSelector } from "../pages/hooks";
 
 export const InvoiceNavbar = () => {
   const dispatch = useAppDispatch();
@@ -23,6 +23,10 @@ export const InvoiceNavbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [filter, setFilter] = useState<string[]>([]);
   const open = Boolean(anchorEl);
+
+  const invoiceData = useAppSelector((state) => state.invoice.value);
+
+  const prevStateRef = useRef(invoiceData);
 
   const filterByStatus = ["Draft", "Pending", "Paid"];
 
@@ -47,13 +51,13 @@ export const InvoiceNavbar = () => {
   };
 
   useEffect(() => {
-    if (filter.length !== 0) {
-      dispatch({ type: "invoice/filter", payload: filter });
-    }
+    dispatch({
+      type: "invoice/filter",
+      payload: { filter, prevStateRef: prevStateRef },
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
-
   return (
     <Container>
       <TextContainer>
