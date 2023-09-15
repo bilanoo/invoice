@@ -4,18 +4,17 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import { getDesignTokens } from "../../theme";
 import { Container } from "../Homepage/HomepageStyles";
 import { Header } from "../../Header/Header";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   ContentContainer,
   ModifyInvoiceActionContainer,
-  PreviousPageButton,
-  PreviousPageContainer,
 } from "./EditInvoiceStyles";
-import BackArrow from "../../assets/back-arrow-icon.svg";
 import { Navbar } from "./features/Navbar/Navbar";
 import { InvoiceContent } from "./features/InvoiceContent/InvoiceContent";
 import { InvoiceActionsForModification } from "./features/InvoiceModificationActions/InvoiceActionsForModification";
 import { Invoice } from "../../data";
+import { BackToHomePage } from "./features/BackToHomePage/BackToHomePage";
+import { EditOrAddNewForm } from "./features/EditOrAddNewForm/EditOrAddNewForm";
 
 export const EditInvoice = () => {
   const { id } = useParams();
@@ -48,28 +47,20 @@ export const EditInvoice = () => {
     dispatch({ type: "invoice/delete", payload: id });
     navigate("/");
   };
-
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <Header />
         <ContentContainer>
-          <PreviousPageContainer>
-            <Link to={"/"} style={{ textDecoration: "none" }}>
-              <PreviousPageButton
-                startIcon={<img src={BackArrow} alt="previous page button" />}
-              >
-                Go Back
-              </PreviousPageButton>
-            </Link>
-          </PreviousPageContainer>
-          <Navbar
+          {/* <BackToHomePage /> */}
+          {/* <Navbar
             status={invoice!.status}
             markInvoiceAsPaid={markInvoiceAsPaid}
             deleteInvoice={deleteInvoice}
-          />
+          /> */}
 
-          <InvoiceContent invoice={invoice} />
+          <EditOrAddNewForm invoiceData={invoice} />
+          {/* <InvoiceContent invoice={invoice} /> */}
         </ContentContainer>
 
         <ModifyInvoiceActionContainer>
