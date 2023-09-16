@@ -24,8 +24,9 @@ export const EditInvoice = () => {
 
   const allInvoicesData = useAppSelector((state) => state.invoice.value);
   const [invoice, setInvoice] = useState<Invoice>(
-    allInvoicesData.find((invoice) => invoice.id === id)!
+    allInvoicesData.find((invoice: Invoice) => invoice.id === id)!
   );
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const lightOrDarkMode = useAppSelector(
     (state) => state.darkOrLightMode.value
@@ -47,20 +48,33 @@ export const EditInvoice = () => {
     dispatch({ type: "invoice/delete", payload: id });
     navigate("/");
   };
+
+  const handleEditInvoiceClick = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <Header />
         <ContentContainer>
-          {/* <BackToHomePage /> */}
-          {/* <Navbar
+          <BackToHomePage isDrawerOpen={false} />
+          <Navbar
+            handleEditInvoiceClick={handleEditInvoiceClick}
             status={invoice!.status}
             markInvoiceAsPaid={markInvoiceAsPaid}
             deleteInvoice={deleteInvoice}
-          /> */}
+          />
 
-          <EditOrAddNewForm invoiceData={invoice} />
-          {/* <InvoiceContent invoice={invoice} /> */}
+          <EditOrAddNewForm
+            invoiceData={invoice}
+            isDrawerOpen={isDrawerOpen}
+            closeDrawer={closeDrawer}
+          />
+          <InvoiceContent invoice={invoice} />
         </ContentContainer>
 
         <ModifyInvoiceActionContainer>
@@ -68,6 +82,7 @@ export const EditInvoice = () => {
             status={invoice.status}
             markInvoiceAsPaid={markInvoiceAsPaid}
             deleteInvoice={deleteInvoice}
+            handleEditInvoiceClick={handleEditInvoiceClick}
           />
         </ModifyInvoiceActionContainer>
       </Container>

@@ -1,8 +1,8 @@
-import { Typography } from "@mui/material";
+import { Drawer, Typography } from "@mui/material";
 import { Box, styled } from "@mui/system";
 
-export const Container = styled(Box)(({ theme }) => ({
-  "&": {
+export const DrawerContainer = styled(Drawer)(({ theme }) => ({
+  "& .MuiPaper-root": {
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",

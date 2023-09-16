@@ -11,12 +11,14 @@ interface NavbarProps {
   status: string;
   markInvoiceAsPaid: () => void;
   deleteInvoice: () => void;
+  handleEditInvoiceClick: () => void;
 }
 
 export const Navbar = ({
   status,
   markInvoiceAsPaid,
   deleteInvoice,
+  handleEditInvoiceClick,
 }: NavbarProps) => {
   return (
     <Container>
@@ -27,6 +29,7 @@ export const Navbar = ({
 
       <ModifyInvoiceContainer>
         <InvoiceActionsForModification
+          handleEditInvoiceClick={handleEditInvoiceClick}
           status={status}
           markInvoiceAsPaid={markInvoiceAsPaid}
           deleteInvoice={deleteInvoice}

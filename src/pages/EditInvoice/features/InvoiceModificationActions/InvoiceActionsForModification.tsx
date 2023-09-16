@@ -9,6 +9,7 @@ import {
 interface InvoiceActionsForModificationProps {
   markInvoiceAsPaid: () => void;
   deleteInvoice: () => void;
+  handleEditInvoiceClick: () => void;
   status: string;
 }
 
@@ -16,6 +17,7 @@ export const InvoiceActionsForModification = ({
   markInvoiceAsPaid,
   status,
   deleteInvoice,
+  handleEditInvoiceClick,
 }: InvoiceActionsForModificationProps) => {
   const [openDeleteConfirmationDialog, setOpenDeleteConfirmationDialog] =
     useState(false);
@@ -30,7 +32,9 @@ export const InvoiceActionsForModification = ({
 
   return (
     <>
-      <EditInvoiceButton>Edit</EditInvoiceButton>
+      <EditInvoiceButton onClick={handleEditInvoiceClick}>
+        Edit
+      </EditInvoiceButton>
       <DeleteInvoiceButton
         sx={{ marginTop: "21px", marginBottom: "22px" }}
         onClick={openDeleteDialog}

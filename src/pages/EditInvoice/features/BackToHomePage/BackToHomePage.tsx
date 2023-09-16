@@ -5,16 +5,33 @@ import {
 } from "./BackToHomePageStyles";
 import BackArrow from "../../../../assets/back-arrow-icon.svg";
 
-export const BackToHomePage = () => {
+interface BackToHomePageProps {
+  isDrawerOpen: boolean;
+  handleBackButtonClick?: () => void;
+}
+
+export const BackToHomePage = ({
+  isDrawerOpen,
+  handleBackButtonClick,
+}: BackToHomePageProps) => {
   return (
     <PreviousPageContainer>
-      <Link to={"/"} style={{ textDecoration: "none" }}>
+      {!isDrawerOpen ? (
+        <Link to={"/"} style={{ textDecoration: "none" }}>
+          <PreviousPageButton
+            startIcon={<img src={BackArrow} alt="previous page button" />}
+          >
+            Go Back
+          </PreviousPageButton>
+        </Link>
+      ) : (
         <PreviousPageButton
+          onClick={handleBackButtonClick}
           startIcon={<img src={BackArrow} alt="previous page button" />}
         >
           Go Back
         </PreviousPageButton>
-      </Link>
+      )}
     </PreviousPageContainer>
   );
 };
