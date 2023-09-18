@@ -9,6 +9,17 @@ export const DrawerContainer = styled(Drawer)(({ theme }) => ({
     fontFamily: "inherit",
     backgroundColor: theme.palette.mode === "light" ? "#FFF" : "#141625",
   },
+
+  "@media only screen and (min-width: 768px)": {
+    "& .MuiPaper-root": {
+      width: "60%",
+    },
+  },
+  "@media only screen and (min-width: 992px)": {
+    "& .MuiPaper-root": {
+      width: "40%",
+    },
+  },
 }));
 
 export const Heading = styled(Typography)(({ theme }) => ({
@@ -35,11 +46,23 @@ export const Subheading = styled(Typography)(({ theme }) => ({
   },
 }));
 
+export const GenericContainer = styled(Box)(() => ({
+  "&": {
+    display: "flex",
+    flexDirection: "column",
+    boxSizing: "border-box",
+  },
+  "@media only screen and (min-width: 768px)": {
+    "&": {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+  },
+}));
+
 export const CityAndPostCodeContainer = styled(Box)(() => ({
   "&": {
     display: "flex",
     boxSizing: "border-box",
-    marginTop: "25px",
-    marginBottom: "25px",
   },
 }));

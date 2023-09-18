@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Invoice } from "../../../../data";
 import {
+  GenericContainer,
   CityAndPostCodeContainer,
   DrawerContainer,
   Heading,
@@ -10,6 +11,7 @@ import { BackToHomePage } from "../BackToHomePage/BackToHomePage";
 import { GenericInputFieldWithHeading } from "./GenericInputFieldWithHeading/GenericInputFieldWithHeading";
 import { InvoiceDate } from "../InvoiceDate/InvoiceDate";
 import dayjs, { Dayjs } from "dayjs";
+import { PaymentTermsDropdown } from "./PaymentTermsDropdown/PaymentTermsDropdown";
 
 interface EditOrAddNewFormProps {
   invoiceData: Invoice;
@@ -57,37 +59,38 @@ export const EditOrAddNewForm = ({
         addressType="senderAddress"
         margin="0 24px 24px 24px"
       />
+      <GenericContainer>
+        <CityAndPostCodeContainer>
+          <GenericInputFieldWithHeading
+            title="City"
+            value={invoiceForm.senderAddress.city}
+            fieldName="city"
+            isFieldPartOfAddress={true}
+            setInvoiceForm={setInvoiceForm}
+            addressType="senderAddress"
+            margin="0 24px 24px 24px"
+          />
+          <GenericInputFieldWithHeading
+            title="Post Code"
+            value={invoiceForm.senderAddress.postCode}
+            fieldName="postCode"
+            isFieldPartOfAddress={true}
+            setInvoiceForm={setInvoiceForm}
+            addressType="senderAddress"
+            margin="0 24px 24px 0px"
+          />
+        </CityAndPostCodeContainer>
 
-      <CityAndPostCodeContainer>
         <GenericInputFieldWithHeading
-          title="City"
-          value={invoiceForm.senderAddress.city}
-          fieldName="city"
+          title="Contry"
+          value={invoiceForm.senderAddress.country}
+          fieldName="country"
           isFieldPartOfAddress={true}
           setInvoiceForm={setInvoiceForm}
           addressType="senderAddress"
           margin="0 24px 24px 24px"
         />
-        <GenericInputFieldWithHeading
-          title="Post Code"
-          value={invoiceForm.senderAddress.postCode}
-          fieldName="postCode"
-          isFieldPartOfAddress={true}
-          setInvoiceForm={setInvoiceForm}
-          addressType="senderAddress"
-          margin="0 24px 24px 0px"
-        />
-      </CityAndPostCodeContainer>
-
-      <GenericInputFieldWithHeading
-        title="Contry"
-        value={invoiceForm.senderAddress.country}
-        fieldName="country"
-        isFieldPartOfAddress={true}
-        setInvoiceForm={setInvoiceForm}
-        addressType="senderAddress"
-        margin="0 24px 24px 24px"
-      />
+      </GenericContainer>
 
       <Subheading sx={{ marginTop: "41px" }}>Bill To</Subheading>
 
@@ -118,38 +121,44 @@ export const EditOrAddNewForm = ({
         margin="0 24px 24px 24px"
       />
 
-      <CityAndPostCodeContainer>
+      <GenericContainer>
+        <CityAndPostCodeContainer>
+          <GenericInputFieldWithHeading
+            title="City"
+            value={invoiceForm.clientAddress.city}
+            fieldName="city"
+            isFieldPartOfAddress={true}
+            setInvoiceForm={setInvoiceForm}
+            addressType="senderAddress"
+            margin="0 24px 24px 24px"
+          />
+          <GenericInputFieldWithHeading
+            title="Post Code"
+            value={invoiceForm.clientAddress.postCode}
+            fieldName="postCode"
+            isFieldPartOfAddress={true}
+            setInvoiceForm={setInvoiceForm}
+            addressType="senderAddress"
+            margin="0 24px 24px 0px"
+          />
+        </CityAndPostCodeContainer>
+
         <GenericInputFieldWithHeading
-          title="City"
-          value={invoiceForm.clientAddress.city}
-          fieldName="city"
+          title="Contry"
+          value={invoiceForm.clientAddress.country}
+          fieldName="country"
           isFieldPartOfAddress={true}
           setInvoiceForm={setInvoiceForm}
           addressType="senderAddress"
           margin="0 24px 24px 24px"
         />
-        <GenericInputFieldWithHeading
-          title="Post Code"
-          value={invoiceForm.clientAddress.postCode}
-          fieldName="postCode"
-          isFieldPartOfAddress={true}
-          setInvoiceForm={setInvoiceForm}
-          addressType="senderAddress"
-          margin="0 24px 24px 0px"
-        />
-      </CityAndPostCodeContainer>
+      </GenericContainer>
 
-      <GenericInputFieldWithHeading
-        title="Contry"
-        value={invoiceForm.clientAddress.country}
-        fieldName="country"
-        isFieldPartOfAddress={true}
-        setInvoiceForm={setInvoiceForm}
-        addressType="senderAddress"
-        margin="0 24px 24px 24px"
-      />
+      <GenericContainer>
+        <InvoiceDate invoiceDate={date} handleChange={handleChangeDate} />
 
-      <InvoiceDate invoiceDate={date} handleChange={handleChangeDate} />
+        <PaymentTermsDropdown />
+      </GenericContainer>
     </DrawerContainer>
   );
 };
