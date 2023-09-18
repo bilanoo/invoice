@@ -6,12 +6,16 @@ import {
   DrawerContainer,
   Heading,
   Subheading,
+  ItemList,
+  AddNewItemButton,
 } from "./EditOrAddNewFormstyles";
 import { BackToHomePage } from "../BackToHomePage/BackToHomePage";
 import { GenericInputFieldWithHeading } from "./GenericInputFieldWithHeading/GenericInputFieldWithHeading";
 import { InvoiceDate } from "../InvoiceDate/InvoiceDate";
 import dayjs, { Dayjs } from "dayjs";
 import { PaymentTermsDropdown } from "./PaymentTermsDropdown/PaymentTermsDropdown";
+import { Item } from "./Item/Item";
+import { FormActionsButtons } from "./FormActionsButtons/FormActionsButtons";
 
 interface EditOrAddNewFormProps {
   invoiceData: Invoice;
@@ -159,6 +163,32 @@ export const EditOrAddNewForm = ({
 
         <PaymentTermsDropdown />
       </GenericContainer>
+
+      <GenericInputFieldWithHeading
+        title="Project Description"
+        value={invoiceForm.description}
+        fieldName="description"
+        isFieldPartOfAddress={false}
+        setInvoiceForm={setInvoiceForm}
+        margin="0 24px 24px 24px"
+      />
+
+      <ItemList>Item List</ItemList>
+      {invoiceForm.items.map((item, index) => (
+        <Item
+          key={item.name}
+          index={index}
+          itemName={item.name}
+          itemQuantity={item.quantity}
+          itemPrice={item.price}
+          itemTotal={item.total}
+          setInvoiceForm={setInvoiceForm}
+        />
+      ))}
+
+      <AddNewItemButton>+ Add New Item</AddNewItemButton>
+
+      <FormActionsButtons editingOrCreatingAnInvoice="create" />
     </DrawerContainer>
   );
 };

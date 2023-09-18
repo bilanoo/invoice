@@ -3,7 +3,7 @@ import { Container, InputField, Title } from "./InputFieldStyles";
 
 interface GenericInputFieldWithHeadingProps {
   title: string;
-  value: string;
+  value: string | number;
   fieldName: string;
   isFieldPartOfAddress: boolean;
   setInvoiceForm: React.Dispatch<React.SetStateAction<Invoice>>;

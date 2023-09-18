@@ -1,4 +1,4 @@
-import { Drawer, Typography } from "@mui/material";
+import { Button, Drawer, Typography } from "@mui/material";
 import { Box, styled } from "@mui/system";
 
 export const DrawerContainer = styled(Drawer)(({ theme }) => ({
@@ -8,6 +8,7 @@ export const DrawerContainer = styled(Drawer)(({ theme }) => ({
     flexDirection: "column",
     fontFamily: "inherit",
     backgroundColor: theme.palette.mode === "light" ? "#FFF" : "#141625",
+    backgroundImage: "none",
   },
 
   "@media only screen and (min-width: 768px)": {
@@ -64,5 +65,31 @@ export const CityAndPostCodeContainer = styled(Box)(() => ({
   "&": {
     display: "flex",
     boxSizing: "border-box",
+  },
+}));
+
+export const ItemList = styled(Typography)(() => ({
+  "&": {
+    fontSize: "1.125rem",
+    fontWeight: 700,
+    fontFamily: "inherit",
+    color: "#777F98",
+    marginLeft: "24px",
+  },
+}));
+
+export const AddNewItemButton = styled(Button)(({ theme }) => ({
+  "&": {
+    fontSize: "0.938rem",
+    fontWeight: 700,
+    fontFamily: "inherit",
+    color: "#888EB0",
+    margin: "30px 24px 24px 24px",
+    borderRadius: "24px",
+    textTransform: "none",
+    backgroundColor: theme.customPalette.ghostWhiteToLightBlue,
+  },
+  "&:hover": {
+    backgroundColor: "#DFE3FA",
   },
 }));

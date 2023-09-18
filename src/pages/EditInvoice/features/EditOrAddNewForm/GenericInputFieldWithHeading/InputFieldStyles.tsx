@@ -14,6 +14,7 @@ export const Container = styled(Box, {
     boxSizing: "border-box",
     fontFamily: "inherit",
     margin: margin,
+    flexGrow: 1,
   },
 }));
 
