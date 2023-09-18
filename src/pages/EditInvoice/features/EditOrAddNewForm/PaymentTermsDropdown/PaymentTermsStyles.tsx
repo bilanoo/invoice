@@ -1,6 +1,6 @@
 import { MenuItem, Select, styled } from "@mui/material";
 
-export const DropdownSelect = styled(Select)(({ theme }) => ({
+export const DropdownSelect = styled(Select)(() => ({
   "&": {
     borderRadius: "8px",
     width: "100%",
