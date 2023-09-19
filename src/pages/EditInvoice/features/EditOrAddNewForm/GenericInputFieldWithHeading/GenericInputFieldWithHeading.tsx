@@ -1,48 +1,31 @@
-import { Invoice } from "../../../../../data";
 import { Container, InputField, Title } from "./InputFieldStyles";
 
 interface GenericInputFieldWithHeadingProps {
   title: string;
   value: string | number;
   fieldName: string;
-  isFieldPartOfAddress: boolean;
-  setInvoiceForm: React.Dispatch<React.SetStateAction<Invoice>>;
-  addressType?: "senderAddress" | "clientAddress";
   margin: string;
+  handleChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
 
 export const GenericInputFieldWithHeading = ({
   title,
   value,
   fieldName,
-  isFieldPartOfAddress,
-  setInvoiceForm,
-  addressType,
   margin,
+  handleChange,
 }: GenericInputFieldWithHeadingProps) => {
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    if (isFieldPartOfAddress) {
-      setInvoiceForm((prevState) => ({
-        ...prevState,
-        [addressType!]: {
-          ...prevState[addressType!],
-          [event.target.name]: event.target.value,
-        },
-      }));
-    } else {
-      setInvoiceForm((prevState) => ({
-        ...prevState,
-        [event.target.name]: event.target.value,
-      }));
-    }
-  };
-
   return (
     <Container margin={margin}>
       <Title>{title}</Title>
-      <InputField value={value} onChange={handleChange} name={fieldName} />
+      <InputField
+        value={value}
+        onChange={handleChange}
+        name={fieldName}
+        error={value === "" || value === 0}
+      />
     </Container>
   );
 };

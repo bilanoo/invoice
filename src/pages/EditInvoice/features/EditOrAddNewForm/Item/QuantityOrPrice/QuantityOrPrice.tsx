@@ -7,7 +7,7 @@ import { InputBox } from "./QuantityOrPriceStyles";
 
 interface QuantityOrPriceProps {
   title: string;
-  value: number;
+  value: number | string;
   index: number;
   fieldName: string;
   setInvoiceForm: React.Dispatch<React.SetStateAction<Invoice>>;
@@ -43,6 +43,7 @@ export const QuantitytOrPrice = ({
       <Title>{title}</Title>
       <InputBox
         value={value}
+        error={value === 0 || value === ""}
         onChange={handleChange}
         name={fieldName}
         sx={{ maxWidth: fieldName === "quantity" ? "100px" : "auto" }}

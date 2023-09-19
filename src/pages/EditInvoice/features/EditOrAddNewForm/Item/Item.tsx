@@ -36,7 +36,7 @@ export const Item = ({
       const updatedItem = [...prevState.items];
       updatedItem[index] = {
         ...updatedItem[index],
-        total: itemQuantity * itemPrice,
+        total: (itemQuantity * itemPrice).toFixed(2).toString(),
       };
 
       return {
@@ -46,15 +46,48 @@ export const Item = ({
       // eslint-disable-next-line react-hooks/exhaustive-deps
     });
   }, [itemPrice, itemQuantity]);
+
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    event.preventDefault();
+    const value = event.target.value;
+    setInvoiceForm((prevState) => {
+      const updatedItem = [...prevState.items];
+      updatedItem[index] = {
+        ...updatedItem[index],
+        [event.target.name]: value,
+      };
+
+      return {
+        ...prevState,
+        items: updatedItem,
+      };
+    });
+  };
+  const handleDeleteItem = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    setInvoiceForm((prevState) => {
+      const updatedItem = [...prevState.items];
+      updatedItem.splice(index, 1);
+
+      return {
+        ...prevState,
+        items: updatedItem,
+      };
+    });
+  };
+
   return (
     <Container>
       <GenericInputFieldWithHeading
         title="Item Name"
         value={itemName}
         fieldName="name"
-        isFieldPartOfAddress={false}
-        setInvoiceForm={setInvoiceForm}
         margin="0 16px 0px 0px"
+        handleChange={handleChange}
       />
       <ItemDetailsContainer>
         <QuantitytOrPrice
@@ -73,7 +106,7 @@ export const Item = ({
         />
 
         <GenericInputFieldContainer
-          margin={"0 45px 0px 0px"}
+          margin={"0 20px 0px 0px"}
           minHeight={"73px"}
         >
           <Title textAlign={"start"}>Total</Title>
@@ -82,7 +115,7 @@ export const Item = ({
           </Total>
         </GenericInputFieldContainer>
 
-        <DeleteItemButton>
+        <DeleteItemButton onClick={handleDeleteItem}>
           <img src={deleteIcon} alt="delete item button" />
         </DeleteItemButton>
       </ItemDetailsContainer>

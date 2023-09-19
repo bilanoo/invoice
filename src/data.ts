@@ -14,6 +14,7 @@ export interface Invoice {
 }
 
 export interface Item {
+  id: string;
   name: string;
   quantity: number;
   price: number;
@@ -50,6 +51,7 @@ export const invoiceData: Invoice[] = [
     },
     items: [
       {
+        id: crypto.randomUUID(),
         name: "Brand Guidelines",
         quantity: 1,
         price: 1800.9,
@@ -81,12 +83,14 @@ export const invoiceData: Invoice[] = [
     },
     items: [
       {
+        id: crypto.randomUUID(),
         name: "Banner Design",
         quantity: 1,
         price: 156.0,
         total: 156.0,
       },
       {
+        id: crypto.randomUUID(),
         name: "Email Design",
         quantity: 2,
         price: 200.0,
@@ -118,6 +122,7 @@ export const invoiceData: Invoice[] = [
     },
     items: [
       {
+        id: crypto.randomUUID(),
         name: "Website Redesign",
         quantity: 1,
         price: 14002.33,
@@ -149,6 +154,7 @@ export const invoiceData: Invoice[] = [
     },
     items: [
       {
+        id: crypto.randomUUID(),
         name: "Logo Sketches",
         quantity: 1,
         price: 102.04,
@@ -180,12 +186,14 @@ export const invoiceData: Invoice[] = [
     },
     items: [
       {
+        id: crypto.randomUUID(),
         name: "New Logo",
         quantity: 1,
         price: 1532.33,
         total: 1532.33,
       },
       {
+        id: crypto.randomUUID(),
         name: "Brand Guidelines",
         quantity: 1,
         price: 2500.0,
@@ -217,6 +225,7 @@ export const invoiceData: Invoice[] = [
     },
     items: [
       {
+        id: crypto.randomUUID(),
         name: "Web Design",
         quantity: 1,
         price: 6155.91,
@@ -248,6 +257,7 @@ export const invoiceData: Invoice[] = [
     },
     items: [
       {
+        id: crypto.randomUUID(),
         name: "Logo Re-design",
         quantity: 1,
         price: 3102.04,

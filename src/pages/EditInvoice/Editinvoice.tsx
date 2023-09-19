@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { getDesignTokens } from "../../theme";
@@ -56,6 +56,11 @@ export const EditInvoice = () => {
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
+
+  useEffect(() => {
+    setInvoice(allInvoicesData.find((invoice: Invoice) => invoice.id === id)!);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allInvoicesData]);
   return (
     <ThemeProvider theme={theme}>
       <Container>
