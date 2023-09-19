@@ -43,8 +43,8 @@ export const Item = ({
         ...prevState,
         items: updatedItem,
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemPrice, itemQuantity]);
 
   const handleChange = (
