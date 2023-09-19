@@ -3,7 +3,10 @@ import { Box, styled } from "@mui/system";
 
 export const PreviousPageContainer = styled(Box)(() => ({
   "&": {
-    margin: "33px auto 31px 24px",
+    position: "relative",
+    marginRight: "auto",
+    marginLeft: "24px",
+    paddingBottom: "24px",
   },
 }));
 
