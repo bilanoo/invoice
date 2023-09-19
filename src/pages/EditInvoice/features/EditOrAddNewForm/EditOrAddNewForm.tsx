@@ -42,7 +42,7 @@ export const EditOrAddNewForm = ({
     }));
   };
   return (
-    <DrawerContainer open={isDrawerOpen}>
+    <DrawerContainer open={isDrawerOpen} onClose={closeDrawer}>
       <BackToHomePage
         isDrawerOpen={isDrawerOpen}
         handleBackButtonClick={closeDrawer}

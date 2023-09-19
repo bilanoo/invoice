@@ -18,7 +18,7 @@ export const DrawerContainer = styled(Drawer)(({ theme }) => ({
   },
   "@media only screen and (min-width: 992px)": {
     "& .MuiPaper-root": {
-      width: "40%",
+      width: "45%",
     },
   },
 }));
