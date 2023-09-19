@@ -29,11 +29,11 @@ export const EditOrAddNewForm = ({
   closeDrawer,
 }: EditOrAddNewFormProps) => {
   const [invoiceForm, setInvoiceForm] = useState<Invoice>(invoiceData);
+  const [paymentTerms, setPaymentTerms] = useState(invoiceForm.paymentTerms);
 
-  const date = dayjs(invoiceForm.paymentDue, "YYYY-MM-DD");
+  const date = dayjs(invoiceForm.createdAt, "YYYY-MM-DD");
 
   console.log(invoiceForm);
-  console.log(date);
 
   const handleChangeDate = (value: Dayjs | null) => {
     setInvoiceForm((prevState) => ({
@@ -123,6 +123,7 @@ export const EditOrAddNewForm = ({
         isFieldPartOfAddress={true}
         setInvoiceForm={setInvoiceForm}
         margin="0 24px 24px 24px"
+        addressType="clientAddress"
       />
 
       <GenericContainer>
@@ -133,7 +134,7 @@ export const EditOrAddNewForm = ({
             fieldName="city"
             isFieldPartOfAddress={true}
             setInvoiceForm={setInvoiceForm}
-            addressType="senderAddress"
+            addressType="clientAddress"
             margin="0 24px 24px 24px"
           />
           <GenericInputFieldWithHeading
@@ -142,7 +143,7 @@ export const EditOrAddNewForm = ({
             fieldName="postCode"
             isFieldPartOfAddress={true}
             setInvoiceForm={setInvoiceForm}
-            addressType="senderAddress"
+            addressType="clientAddress"
             margin="0 24px 24px 0px"
           />
         </CityAndPostCodeContainer>
@@ -153,7 +154,7 @@ export const EditOrAddNewForm = ({
           fieldName="country"
           isFieldPartOfAddress={true}
           setInvoiceForm={setInvoiceForm}
-          addressType="senderAddress"
+          addressType="clientAddress"
           margin="0 24px 24px 24px"
         />
       </GenericContainer>
@@ -161,7 +162,10 @@ export const EditOrAddNewForm = ({
       <GenericContainer>
         <InvoiceDate invoiceDate={date} handleChange={handleChangeDate} />
 
-        <PaymentTermsDropdown />
+        <PaymentTermsDropdown
+          paymentTerms={paymentTerms}
+          setPaymentTerms={setPaymentTerms}
+        />
       </GenericContainer>
 
       <GenericInputFieldWithHeading

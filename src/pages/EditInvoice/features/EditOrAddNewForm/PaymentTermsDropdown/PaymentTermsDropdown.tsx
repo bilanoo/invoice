@@ -4,11 +4,24 @@ import {
 } from "../GenericInputFieldWithHeading/InputFieldStyles";
 import { DropdownSelect, Option } from "./PaymentTermsStyles";
 import { useAppSelector } from "../../../../hooks";
+import { SelectChangeEvent } from "@mui/material/Select";
 
-export const PaymentTermsDropdown = () => {
+interface PaymentTermsDropdownProps {
+  paymentTerms: number;
+  setPaymentTerms: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const PaymentTermsDropdown = ({
+  paymentTerms,
+  setPaymentTerms,
+}: PaymentTermsDropdownProps) => {
   const darkOrLightMode = useAppSelector(
     (state) => state.darkOrLightMode.value
   );
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
+    setPaymentTerms(event.target.value as number);
+  };
+
   return (
     <Container margin="25px 24px 24px 24px" gap={"8px"} flexGrow={1}>
       <Title>Payment Terms</Title>
@@ -26,11 +39,13 @@ export const PaymentTermsDropdown = () => {
             },
           },
         }}
+        value={paymentTerms}
+        onChange={handleChange}
       >
-        <Option>Net 1 Day</Option>
-        <Option>Net 7 Days</Option>
-        <Option>Net 14 Days</Option>
-        <Option>Net 30 Days</Option>
+        <Option value={1}>Net 1 Day</Option>
+        <Option value={7}>Net 7 Days</Option>
+        <Option value={14}>Net 14 Days</Option>
+        <Option value={30}>Net 30 Days</Option>
       </DropdownSelect>
     </Container>
   );

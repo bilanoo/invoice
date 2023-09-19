@@ -4,6 +4,9 @@ export const DropdownSelect = styled(Select)(() => ({
   "&": {
     borderRadius: "8px",
     width: "100%",
+    fontFamily: "inherit",
+    fontSize: "0.938rem",
+    fontWeight: 700,
   },
 }));
 
