@@ -87,7 +87,7 @@ export const EditOrAddNewForm = ({
     setInvoiceForm(invoiceData);
   };
 
-  const handleSacheChangesClick = () => {
+  const handleSaveChangesClick = () => {
     dispatch({
       type: "invoice/updateInvoice",
       payload: invoiceForm,
@@ -244,7 +244,7 @@ export const EditOrAddNewForm = ({
       </AddNewItemButton>
 
       <FormActionsButtons
-        handleSaveChangesClick={handleSacheChangesClick}
+        handleSaveChangesClick={handleSaveChangesClick}
         editingOrCreatingAnInvoice="edit"
         handleCancelOnClick={handleClose}
         isUserAbleToSave={areAllFieldsFilled}
