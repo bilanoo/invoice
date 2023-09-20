@@ -10,12 +10,14 @@ interface FormActionsButtonsProps {
   isUserAbleToSave: boolean;
   handleCancelOnClick: () => void;
   handleSaveChangesClick: () => void;
+  handleSaveAsDraftClick: () => void;
 }
 export const FormActionsButtons = ({
   editingOrCreatingAnInvoice,
   isUserAbleToSave,
   handleCancelOnClick,
   handleSaveChangesClick,
+  handleSaveAsDraftClick,
 }: FormActionsButtonsProps) => {
   return (
     <ActionsContainer>
@@ -32,7 +34,12 @@ export const FormActionsButtons = ({
         {editingOrCreatingAnInvoice === "edit" ? "Cancel" : "Discard"}
       </CancelButton>
       {editingOrCreatingAnInvoice === "create" && (
-        <SaveAsDraftButton>Save as Draft</SaveAsDraftButton>
+        <SaveAsDraftButton
+          onClick={handleSaveAsDraftClick}
+          disabled={!isUserAbleToSave}
+        >
+          Save as Draft
+        </SaveAsDraftButton>
       )}
       <SaveChangesButton
         onClick={handleSaveChangesClick}

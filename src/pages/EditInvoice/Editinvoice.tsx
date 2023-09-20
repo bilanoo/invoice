@@ -75,6 +75,7 @@ export const EditInvoice = () => {
           />
 
           <EditOrAddNewForm
+            editingOrCreatingAnInvoice="edit"
             invoiceData={invoice}
             isDrawerOpen={isDrawerOpen}
             closeDrawer={closeDrawer}

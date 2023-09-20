@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Invoice } from "../../../../data";
+import { Invoice, Item as ItemInterface } from "../../../../data";
 import {
   GenericContainer,
   CityAndPostCodeContainer,
@@ -21,6 +21,7 @@ import { useAppDispatch } from "../../../hooks";
 interface EditOrAddNewFormProps {
   invoiceData: Invoice;
   isDrawerOpen: boolean;
+  editingOrCreatingAnInvoice: "edit" | "create";
   closeDrawer: () => void;
 }
 
@@ -28,6 +29,7 @@ export const EditOrAddNewForm = ({
   invoiceData,
   isDrawerOpen,
   closeDrawer,
+  editingOrCreatingAnInvoice,
 }: EditOrAddNewFormProps) => {
   const [invoiceForm, setInvoiceForm] = useState<Invoice>(invoiceData);
   const [areAllFieldsFilled, setAreAllFieldsFilled] = useState(false);
@@ -39,7 +41,7 @@ export const EditOrAddNewForm = ({
   const handleChangeDate = (value: Dayjs | null) => {
     setInvoiceForm((prevState) => ({
       ...prevState,
-      paymentDue: value!.format("YYYY-MM-DD"),
+      createdAt: value!.format("YYYY-MM-DD"),
     }));
   };
 
@@ -88,24 +90,67 @@ export const EditOrAddNewForm = ({
   };
 
   const handleSaveChangesClick = () => {
+    const newInvoice = {
+      ...invoiceForm,
+      status: "pending",
+      paymentTerms: paymentTerms,
+    };
+    const updatedInvoice = { ...invoiceForm, paymentTerms: paymentTerms };
+    if (editingOrCreatingAnInvoice === "create") {
+      dispatch({ type: "invoice/addNewInvoice", payload: newInvoice });
+    } else {
+      dispatch({
+        type: "invoice/updateInvoice",
+        payload: updatedInvoice,
+      });
+    }
+
+    closeDrawer();
+  };
+
+  const handleSaveAsDraftOnClick = () => {
+    const draftInvoiceForm = {
+      ...invoiceData,
+      status: "draft",
+      paymentTerms: paymentTerms,
+    };
     dispatch({
-      type: "invoice/updateInvoice",
-      payload: invoiceForm,
+      type: "invoice/addNewInvoice",
+      payload: draftInvoiceForm,
     });
+
     closeDrawer();
   };
 
   useEffect(() => {
+    const propertiesToCheck = Object.entries(invoiceForm).filter(
+      ([key, value]) => {
+        // Exclude properties you don't want to check
+        return (
+          key !== "id" &&
+          key !== "createdAt" &&
+          key !== "status" &&
+          (value !== "" || key === "items")
+        );
+      }
+    );
+
     setAreAllFieldsFilled(
-      Object.values(invoiceForm).every((value) => value !== "") &&
-        invoiceForm.items.length > 0 &&
-        Object.values(invoiceForm.items).every(
-          (eachItem) =>
-            eachItem.name !== "" &&
-            eachItem.quantity !== 0 &&
-            eachItem.price !== 0 &&
-            eachItem.total.toString() !== "0.00"
-        )
+      propertiesToCheck.every(([key, value]) => {
+        if (key === "items") {
+          return (
+            value.length > 0 &&
+            value.every(
+              (eachItem: ItemInterface) =>
+                eachItem.name !== "" &&
+                eachItem.quantity !== 0 &&
+                eachItem.price !== 0 &&
+                eachItem.total.toString() !== "0.00"
+            )
+          );
+        }
+        return value !== "";
+      })
     );
   }, [invoiceForm]);
 
@@ -116,8 +161,14 @@ export const EditOrAddNewForm = ({
         handleBackButtonClick={handleClose}
       />
       <Heading>
-        Edit <span style={{ color: "#888EB0" }}>#</span>
-        {invoiceForm.id}
+        {editingOrCreatingAnInvoice === "edit" ? (
+          <>
+            Edit <span style={{ color: "#888EB0" }}>#</span>
+            {invoiceForm.id}{" "}
+          </>
+        ) : (
+          "New Invoice"
+        )}
       </Heading>
 
       <Subheading>Bill From</Subheading>
@@ -210,7 +261,11 @@ export const EditOrAddNewForm = ({
       </GenericContainer>
 
       <GenericContainer>
-        <InvoiceDate invoiceDate={date} handleChange={handleChangeDate} />
+        <InvoiceDate
+          invoiceDate={date}
+          handleChange={handleChangeDate}
+          disabled={editingOrCreatingAnInvoice === "edit" ? true : false}
+        />
 
         <PaymentTermsDropdown
           paymentTerms={paymentTerms}
@@ -245,9 +300,10 @@ export const EditOrAddNewForm = ({
 
       <FormActionsButtons
         handleSaveChangesClick={handleSaveChangesClick}
-        editingOrCreatingAnInvoice="edit"
+        editingOrCreatingAnInvoice={editingOrCreatingAnInvoice}
         handleCancelOnClick={handleClose}
         isUserAbleToSave={areAllFieldsFilled}
+        handleSaveAsDraftClick={handleSaveAsDraftOnClick}
       />
     </DrawerContainer>
   );

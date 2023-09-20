@@ -3,6 +3,7 @@ import { Invoice } from "../../../../data";
 import { invoiceData } from "../../../../data";
 import { RootState } from "../../../store";
 import dayjs from "dayjs";
+import { generateRandomID } from "../../../../utils";
 interface InvoiceState {
   value: Invoice[];
 }
@@ -15,17 +16,41 @@ export const invoiceSlice = createSlice({
   name: "invoice",
   initialState,
   reducers: {
+    addNewInvoice: (state, action) => {
+      const newInvoice = action.payload;
+      const randomID = generateRandomID();
+
+      const total = action.payload.items.reduce(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (accumulator: number, currentValue: any) =>
+          accumulator + Number(currentValue.total),
+        0
+      );
+      let dueDateUpdated = dayjs(action.payload.createdAt, "YYYY-MM-DD");
+      dueDateUpdated = dueDateUpdated.add(action.payload.paymentTerms, "day");
+      state.value = [
+        ...state.value,
+        {
+          ...newInvoice,
+          id: randomID,
+          paymentDue: dueDateUpdated.format("YYYY-MM-DD").toString(),
+          total: total,
+        },
+      ];
+    },
     updateInvoice: (state, action) => {
       const updatedInvoice = [...state.value];
       const total = action.payload.items.reduce(
-        (accumulator, currentValue) => accumulator + Number(currentValue.total),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (accumulator: number, currentValue: any) =>
+          accumulator + Number(currentValue.total),
         0
       );
 
-      let dueDateUpdated = dayjs(action.payload.paymentDue, "YYYY-MM-DD");
+      let dueDateUpdated = dayjs(action.payload.createdAt, "YYYY-MM-DD");
 
       dueDateUpdated = dueDateUpdated.add(action.payload.paymentTerms, "day");
-
+      console.log(action.payload.paymentTerms);
       const indexPositionOfUpdatedInvoice = updatedInvoice.findIndex(
         (eachInvoice) => eachInvoice.id === action.payload.id
       );

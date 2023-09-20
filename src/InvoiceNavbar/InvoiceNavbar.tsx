@@ -16,13 +16,40 @@ import { useEffect, useRef, useState } from "react";
 import { FormControlLabel, MenuItem } from "@mui/material";
 import useWindowDimensions from "../utils";
 import { useAppDispatch, useAppSelector } from "../pages/hooks";
+import { EditOrAddNewForm } from "../pages/EditInvoice/features/EditOrAddNewForm/EditOrAddNewForm";
 
 export const InvoiceNavbar = () => {
   const dispatch = useAppDispatch();
   const { width } = useWindowDimensions();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const [filter, setFilter] = useState<string[]>([]);
   const open = Boolean(anchorEl);
+
+  const emptyInvoice = {
+    id: "",
+    createdAt: "",
+    paymentDue: "",
+    description: "",
+    paymentTerms: 1,
+    clientName: "",
+    clientEmail: "",
+    status: "",
+    senderAddress: {
+      street: "",
+      city: "",
+      postCode: "",
+      country: "",
+    },
+    clientAddress: {
+      street: "",
+      city: "",
+      postCode: "",
+      country: "",
+    },
+    items: [],
+    total: 0,
+  };
 
   const invoiceData = useAppSelector((state) => state.invoice.value);
 
@@ -58,6 +85,14 @@ export const InvoiceNavbar = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
+  const handleNewInvoiceClick = () => {
+    setOpenDrawer(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setOpenDrawer(false);
+  };
+
   return (
     <Container>
       <TextContainer>
@@ -91,10 +126,18 @@ export const InvoiceNavbar = () => {
         ))}
       </FilterMenu>
       <NewInvoiceButton
+        onClick={handleNewInvoiceClick}
         startIcon={<img src={PlusIcon} alt="Add new invoice icon" />}
       >
         {width < 650 ? "New" : "New Invoice"}
       </NewInvoiceButton>
+
+      <EditOrAddNewForm
+        isDrawerOpen={openDrawer}
+        closeDrawer={handleCloseDrawer}
+        invoiceData={emptyInvoice}
+        editingOrCreatingAnInvoice="create"
+      />
     </Container>
   );
 };
