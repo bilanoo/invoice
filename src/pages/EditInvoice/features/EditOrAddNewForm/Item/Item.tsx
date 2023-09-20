@@ -36,7 +36,7 @@ export const Item = ({
       const updatedItem = [...prevState.items];
       updatedItem[index] = {
         ...updatedItem[index],
-        total: (itemQuantity * itemPrice).toFixed(2).toString(),
+        total: (itemQuantity * itemPrice).toFixed(2),
       };
 
       return {
