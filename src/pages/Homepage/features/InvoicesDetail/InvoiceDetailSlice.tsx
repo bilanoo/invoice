@@ -50,7 +50,7 @@ export const invoiceSlice = createSlice({
       let dueDateUpdated = dayjs(action.payload.createdAt, "YYYY-MM-DD");
 
       dueDateUpdated = dueDateUpdated.add(action.payload.paymentTerms, "day");
-      console.log(action.payload.paymentTerms);
+
       const indexPositionOfUpdatedInvoice = updatedInvoice.findIndex(
         (eachInvoice) => eachInvoice.id === action.payload.id
       );
