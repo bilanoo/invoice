@@ -66,6 +66,7 @@ export const AvatarContainer = styled(Box)(() => ({
     "&": {
       marginRight: "0",
       marginBottom: "24px",
+      height: 'inherit'
     },
   },
 }));

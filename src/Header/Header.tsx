@@ -32,7 +32,7 @@ export const Header = () => {
       </DarkOrLightModeButton>
       <Divider />
       <AvatarContainer>
-        <UserAvatar src={Avatar} alt="user-avatar-image" />
+        <UserAvatar src={Avatar} alt="user-avatar-image"/>
       </AvatarContainer>
     </Container>
   );
