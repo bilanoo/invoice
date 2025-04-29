@@ -7,7 +7,7 @@ import {
   Divider,
   InvoiceLogo,
   UserAvatar,
-} from "./HeaderStyles";
+} from "./Header.styles";
 import Logo from "../../../../public/logo-with-background.svg";
 import Moon from "../../../../public/icon-moon.svg";
 import Sun from "../../../../public/icon-sun.svg";

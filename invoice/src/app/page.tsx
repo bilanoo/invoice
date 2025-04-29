@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { Container, InvoiceContainer } from "./HomepageStyles";
-import { Header } from "./_components/Header/Header";
+import { Container, InvoiceContainer } from "./Homepage.styles";
+import { Header } from "./_components/Header/Header.client";
 
 export const metadata: Metadata = {
   title: "Invoice App",
