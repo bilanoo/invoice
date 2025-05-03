@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   Button,
@@ -60,6 +62,20 @@ export const FilterByText = styled(Typography)(({ theme }) => ({
     alignSelf: "center",
     padding: "0",
     margin: "0 0 0 auto",
+    "& .mobile-text-content": {
+      display: "inline",
+    },
+    "& .desktop-text-content": {
+      display: "none",
+    },
+    "@media only screen and (min-width: 650px) ": {
+      "& .mobile-text-content": {
+        display: "none",
+      },
+      "& .desktop-text-content": {
+        display: "inline",
+      },
+    },
   },
 }));
 
@@ -90,6 +106,20 @@ export const NewInvoiceButton = styled(Button)(({ theme }) => ({
     borderRadius: "30px",
     minWidth: "100px",
     alignItems: "center",
+    "& .mobile-text-content": {
+      display: "inline",
+    },
+    "& .desktop-text-content": {
+      display: "none",
+    },
+    "@media only screen and (min-width: 650px) ": {
+      "& .mobile-text-content": {
+        display: "none",
+      },
+      "& .desktop-text-content": {
+        display: "inline",
+      },
+    },
   },
   "&:hover": {
     backgroundColor: theme.customPalette.lightPurple,

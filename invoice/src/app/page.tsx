@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Container, InvoiceContainer } from "./Homepage.styles";
 import { Header } from "./_components/Header/Header.client";
+import { InvoiceNavbar } from "./_components/InvoiceNavbar/InvoiceNavbar";
 
 export const metadata: Metadata = {
   title: "Invoice App",
@@ -11,7 +12,7 @@ export default function Home() {
     <Container>
       <Header />
       <InvoiceContainer>
-        <h3>num of invoices</h3>
+        <InvoiceNavbar />
       </InvoiceContainer>
     </Container>
   );

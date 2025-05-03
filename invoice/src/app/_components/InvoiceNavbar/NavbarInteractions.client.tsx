@@ -1,26 +1,23 @@
+"use client";
+
+import { FormControlLabel, MenuItem } from "@mui/material";
 import {
-  AmountOfInvoices,
-  Container,
   CustomCheckbox,
   FilterByText,
   FilterDropdownButton,
   FilterMenu,
-  InvoiceText,
   LabelInformation,
   NewInvoiceButton,
-  TextContainer,
 } from "./InvoiceNavbar.styles";
-import DropdownArrow from "../assets/icon-arrow-down.svg";
-import PlusIcon from "../assets/plus-icon.svg";
+import DropdownArrow from "../../../../public/icon-arrow-down.svg";
+import PlusIcon from "../../../../public/plus-icon.svg";
 import { useEffect, useRef, useState } from "react";
-import { FormControlLabel, MenuItem } from "@mui/material";
-import useWindowDimensions from "../utils";
-import { useAppDispatch, useAppSelector } from "../pages/hooks";
-import { EditOrAddNewForm } from "../pages/EditInvoice/features/EditOrAddNewForm/EditOrAddNewForm";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import Image from "next/image";
+import { EditOrAddNewForm } from "../EditOrAddNewInvoiceForm/EditOrAddNewForm";
 
-export const InvoiceNavbar = () => {
+export const NavbarInteractions = () => {
   const dispatch = useAppDispatch();
-  const { width } = useWindowDimensions();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [filter, setFilter] = useState<string[]>([]);
@@ -92,16 +89,14 @@ export const InvoiceNavbar = () => {
   const handleCloseDrawer = () => {
     setOpenDrawer(false);
   };
-
   return (
-    <Container>
-      <TextContainer>
-        <InvoiceText>Invoice</InvoiceText>
-        <AmountOfInvoices>No invoices</AmountOfInvoices>
-      </TextContainer>
-      <FilterByText>{width < 650 ? "Filter" : "Filter by status"}</FilterByText>
+    <>
+      <FilterByText>
+        <span className="mobile-text-content">Filter</span>
+        <span className="desktop-text-content">Filter by status</span>
+      </FilterByText>
       <FilterDropdownButton onClick={handleClick}>
-        <img src={DropdownArrow} alt="filter-dropdown-button" />
+        <Image src={DropdownArrow} alt="Dropdown icon to filter invoices" />
       </FilterDropdownButton>
       <FilterMenu
         id="filter-menu"
@@ -127,17 +122,17 @@ export const InvoiceNavbar = () => {
       </FilterMenu>
       <NewInvoiceButton
         onClick={handleNewInvoiceClick}
-        startIcon={<img src={PlusIcon} alt="Add new invoice icon" />}
+        startIcon={<Image src={PlusIcon} alt="Icon to add a new invoice" />}
       >
-        {width < 650 ? "New" : "New Invoice"}
+        <span className="mobile-text-content">New</span>
+        <span className="desktop-text-content">New Invoice</span>
       </NewInvoiceButton>
-
       <EditOrAddNewForm
         isDrawerOpen={openDrawer}
         closeDrawer={handleCloseDrawer}
         invoiceData={emptyInvoice}
         editingOrCreatingAnInvoice="create"
       />
-    </Container>
+    </>
   );
 };
