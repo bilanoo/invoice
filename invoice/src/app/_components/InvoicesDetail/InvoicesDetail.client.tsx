@@ -14,7 +14,9 @@ export const InvoiceDetail = () => {
         <Link
           href={`/edit-invoice/${invoice.id}`}
           key={invoice.id}
-          style={{ textDecoration: "none" }}
+          style={{
+            textDecoration: "none",
+          }}
         >
           <Invoice
             key={invoice.id}

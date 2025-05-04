@@ -11,17 +11,10 @@ export const Container = styled(Box)(({ theme }) => ({
     alignSelf: "center",
     borderRadius: "8px",
     cursor: "pointer",
-    marginBottom: "16px",
+    marginBottom: "0px",
   },
   ":hover": {
     border: `1px solid ${theme.customPalette.mainPurple}`,
-  },
-  "@media only screen and (min-width: 992px)": {
-    "&": {
-      width: "93%",
-      marginLeft: "auto",
-      marginRight: "auto",
-    },
   },
 }));
 

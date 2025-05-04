@@ -12,6 +12,8 @@ export const Container = styled(Box)(() => ({
     "&": {
       width: "100%",
       margin: "32px 0 0 0",
+      padding: "0 55px 0 55px",
+      gap: "30px",
     },
   },
 }));
