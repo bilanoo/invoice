@@ -10,7 +10,13 @@ import {
   styled,
 } from "@mui/material";
 
-export const Container = styled(Box)(() => ({
+interface NavbarProps {
+  availableInvoices: boolean;
+}
+
+export const Container = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "availableInvoices",
+})<NavbarProps>(({ availableInvoices }) => ({
   "&": {
     margin: "32px 24px 0 24px",
     display: "flex",
@@ -18,7 +24,7 @@ export const Container = styled(Box)(() => ({
   },
   "@media only screen and (min-width: 992px)": {
     "&": {
-      marginTop: "77px",
+      marginTop: `${availableInvoices ? "77px" : "0px"}`,
       paddingTop: "32px",
       alignSelf: "center",
       alignItems: "center",

@@ -29,8 +29,9 @@ export const EmptyIllustratorImage = styled(Image)(() => ({
   },
 }));
 
-export const NoContentText = styled(Typography)(() => ({
+export const NoContentText = styled(Typography)(({ theme }) => ({
   "&": {
+    color: theme.palette.text.primary,
     fontSize: "1.5rem",
     fontWeight: 700,
     marginTop: "42px",
