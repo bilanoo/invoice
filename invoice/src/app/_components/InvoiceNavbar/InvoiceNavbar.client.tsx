@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppSelector } from "../../../../public/hooks";
+import { useAppSelector } from "@/store/hooks";
 import {
   AmountOfInvoices,
   Container,
@@ -12,6 +12,7 @@ import { NavbarInteractions } from "./NavbarInteractions.client";
 
 export const InvoiceNavbar = () => {
   const invoiceData = useAppSelector((state) => state.invoice.value);
+
   return (
     <Container availableInvoices={invoiceData.length !== 0}>
       <TextContainer>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   PreviousPageButton,
   PreviousPageContainer,
@@ -18,7 +18,7 @@ export const BackToHomePage = ({
   return (
     <PreviousPageContainer>
       {!isDrawerOpen ? (
-        <Link to={"/"} style={{ textDecoration: "none" }}>
+        <Link href={"/"} style={{ textDecoration: "none" }}>
           <PreviousPageButton
             startIcon={<Image src={BackArrow} alt="Previous page button" />}
           >

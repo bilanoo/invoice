@@ -65,12 +65,11 @@ export const NavbarInteractions = () => {
     event: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
   ) => {
+    const formValue = event.currentTarget.value; // this line
     if (checked) {
-      setFilter((prevState) => [...prevState, event.currentTarget.value]);
+      setFilter((prevState) => [...prevState, formValue]);
     } else {
-      setFilter(
-        filter.filter((status) => status !== event.currentTarget.value)
-      );
+      setFilter(filter.filter((status) => status !== formValue));
     }
   };
 
