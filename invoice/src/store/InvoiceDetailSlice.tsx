@@ -5,7 +5,7 @@ import { Invoice } from "../data";
 import { invoiceData } from "../data";
 import { RootState } from "./store";
 import dayjs from "dayjs";
-import { generateRandomID } from "../utils";
+import { v4 as uuidv4 } from "uuid";
 interface InvoiceState {
   value: Invoice[];
 }
@@ -20,7 +20,7 @@ export const invoiceSlice = createSlice({
   reducers: {
     addNewInvoice: (state, action) => {
       const newInvoice = action.payload;
-      const randomID = generateRandomID();
+      const randomID = uuidv4();
 
       const total = action.payload.items.reduce(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
