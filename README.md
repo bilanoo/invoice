@@ -1,7 +1,5 @@
 # Invoice app
 
-
-
 ## Table of contents
 
 - [Overview](#overview)
@@ -13,8 +11,8 @@
 - [Continued development](#continued-development)
 
 ### Screenshot
-![Design preview for the Invoice app coding challenge](./preview.jpg)
 
+![Design preview for the Invoice app coding challenge](./preview.jpg)
 
 ### The Project
 
@@ -47,7 +45,9 @@ Your users should be able to:
 - Live Site URL: [Invoice App](https://invoice-app-by-bilal-khan.netlify.app)
 
 ### Built with
-- [React](https://reactjs.org/) - JS library
+
+- [NextJS](https://nextjs.org/) - JS Framework
+- [React](https://reactjs.org/) - JS Library
 - Typescript
 - CSS
 - Flexbox
