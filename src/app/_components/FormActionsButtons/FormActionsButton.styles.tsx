@@ -1,12 +1,15 @@
 import { Box, Button, styled } from "@mui/material";
 
-export const ActionsContainer = styled(Box)(() => ({
+export const ActionsContainer = styled(Box)(({ theme }) => ({
   "&": {
     display: "flex",
     alignitems: "center",
     justifyContent: "center",
     marginTop: "24px",
-    backgroundColor: "#1E2139",
+    backgroundColor: theme.customPalette.invoiceBackgroundColor,
+    boxShadow:
+      theme.palette.mode === "light" &&
+      "0px -4px 20px rgba(202, 197, 197, 0.75)",
   },
 }));
 
