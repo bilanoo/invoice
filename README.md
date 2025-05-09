@@ -42,7 +42,7 @@ Your users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/bilanoo/invoice)
-- Live Site URL: [Invoice App](invoice-wine-five.vercel.app)
+- Live Site URL: [Invoice App](https://invoice-wine-five.vercel.app)
 
 ### Built with
 
