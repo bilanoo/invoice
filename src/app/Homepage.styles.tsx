@@ -8,6 +8,7 @@ export const Container = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     width: "100%",
     height: "100%",
+    overflow: "auto",
   },
   "@media only screen and (min-width: 483px) ": {
     "&": {
