@@ -50,10 +50,10 @@ export const InvoiceContent = ({ invoice }: InvoiceContentProps) => {
         </GenericTextContainer>
 
         <ClientAddress>
-          <Description>{invoice.clientAddress.street}</Description>
-          <CityOrPostCode>{invoice.clientAddress.city}</CityOrPostCode>
-          <CityOrPostCode>{invoice.clientAddress.postCode}</CityOrPostCode>
-          <CityOrPostCode>{invoice.clientAddress.country}</CityOrPostCode>
+          <Description>{invoice.senderAddress.street}</Description>
+          <CityOrPostCode>{invoice.senderAddress.city}</CityOrPostCode>
+          <CityOrPostCode>{invoice.senderAddress.postCode}</CityOrPostCode>
+          <CityOrPostCode>{invoice.senderAddress.country}</CityOrPostCode>
         </ClientAddress>
       </ClientInformationContainer>
 
@@ -76,10 +76,10 @@ export const InvoiceContent = ({ invoice }: InvoiceContentProps) => {
           <SmallText sx={{ marginBottom: "7px" }}>
             {invoice.clientName}
           </SmallText>
-          <Description>{invoice.senderAddress.street}</Description>
-          <Description>{invoice.senderAddress.city}</Description>
-          <Description>{invoice.senderAddress.postCode}</Description>
-          <Description>{invoice.senderAddress.country}</Description>
+          <Description>{invoice.clientAddress.street}</Description>
+          <Description>{invoice.clientAddress.city}</Description>
+          <Description>{invoice.clientAddress.postCode}</Description>
+          <Description>{invoice.clientAddress.country}</Description>
         </GenericTextContainer>
 
         <SentToContainer>

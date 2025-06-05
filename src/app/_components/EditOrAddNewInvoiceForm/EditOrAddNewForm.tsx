@@ -255,7 +255,7 @@ export const EditOrAddNewForm = ({
         </CityAndPostCodeContainer>
 
         <GenericInputFieldWithHeading
-          title="Contry"
+          title="Country"
           value={invoiceForm.clientAddress.country}
           fieldName="country"
           handleChange={changeAddressDetails("clientAddress")}

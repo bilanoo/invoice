@@ -16,11 +16,7 @@ export const InvoiceDate = ({
   return (
     <Container>
       <DescriptionText>Invoice Date</DescriptionText>
-      <DatePicker
-        value={invoiceDate}
-        onChange={handleChange}
-        disabled={disabled}
-      />
+      <DatePicker value={invoiceDate} onChange={handleChange} />
     </Container>
   );
 };
