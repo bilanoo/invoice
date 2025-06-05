@@ -1,5 +1,5 @@
 import postgres from "postgres";
-import { invoiceData } from "../../data";
+import { invoiceData, Item } from "../../data";
 import { randomInt, randomUUID } from "crypto";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
@@ -54,6 +54,7 @@ async function seedInvoices() {
   );`;
 
   for (const invoice of invoiceData) {
+    const invoiceNumber = makeInvoiceNumber();
     await sql`
       INSERT INTO invoices (
         invoice_id,
@@ -65,7 +66,7 @@ async function seedInvoices() {
         payment_terms,
         status
       ) VALUES (
-        ${makeInvoiceNumber()},
+        ${invoiceNumber},
         ${invoice.clientName},
         ${invoice.clientEmail},
         ${invoice.createdAt},
@@ -75,47 +76,45 @@ async function seedInvoices() {
         ${invoice.status}
       );
     `;
+
+    seedItems(invoice.items, invoiceNumber);
   }
-  //   await sql`
-  //     INSERT INTO invoices (
-  //       invoice_number,
-  //       client_name,
-  //       client_email,
-  //       created_at, payment_due, description,
-  //       payment_terms, status, date
-  //     ) VALUES (
-  //       ${invoiceNumber},
-  //       'Bilal Khan',
-  //       'bk@gmail.com',
-  //       '2025-05-18',
-  //       '2025-06-18',
-  //       'Web development',
-  //       30,
-  //       'pending',
-  //       '2025-05-18'
-  //     );
-  //   `;
 }
 
-async function seedItems() {
+async function CreateItems() {
   await sql`
     CREATE TABLE IF NOT EXISTS items (
         id UUID    PRIMARY KEY DEFAULT uuid_generate_v4(),
         invoice_id VARCHAR(20),
         name VARCHAR(40) NOT NULL,
         quantity INT NOT NULL,
-        price INT NOT NULL,
+        price VARCHAR(10) NOT NULL,
         CONSTRAINT fk_invoice
             FOREIGN KEY(invoice_id)
               REFERENCES invoices(invoice_id)
-    )
+    );`;
+}
+
+async function seedItems(items: Item[], invoiceNumber: string) {
+  for (const item of items) {
+    await sql`
+        INSERT INTO items (
+            id, invoice_id, name, quantity, price
+        ) VALUES (
+            ${randomUUID()},
+            ${invoiceNumber},
+            ${item.name},
+            ${item.quantity},
+            ${item.price}
+        );
     `;
+  }
 }
 
 export async function GET() {
   try {
     await sql.begin((sql) => {
-      seedInvoices(), seedItems();
+      CreateItems(), seedInvoices();
     });
     return Response.json({ message: "Database seeded successfully!" });
   } catch (error) {
