@@ -24,7 +24,7 @@ export const Container = styled(Box, {
   },
   "@media only screen and (min-width: 992px)": {
     "&": {
-      marginTop: `${availableInvoices ? "77px" : "0px"}`,
+      marginTop: `${availableInvoices ? "10px" : "0px"}`,
       paddingTop: "32px",
       alignSelf: "center",
       alignItems: "center",

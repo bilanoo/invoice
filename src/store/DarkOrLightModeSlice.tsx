@@ -9,7 +9,7 @@ interface DarkOrLightModeState {
 }
 
 const initialState: DarkOrLightModeState = {
-  value: "light",
+  value: "dark",
 };
 
 export const darkOrLightModeSlice = createSlice({

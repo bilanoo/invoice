@@ -4,9 +4,15 @@
 }
 
 #root {
+  @media only screen and (min-width: 483px) {
+    height: 100%;
+  }
+  @media only screen and (min-width: 992px) {
+    height: auto;
+  }
+
   font-family: "League Spartan", sans-serif;
   text-align: center;
-  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -14,7 +20,12 @@
 
 html,
 body {
-  height: 100%;
+  @media only screen and (min-width: 483px) {
+    height: 100%;
+  }
+  @media only screen and (min-width: 992px) {
+    height: auto;
+  }
   width: 100%;
   margin: 0;
   padding: 0;
